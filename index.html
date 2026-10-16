@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Nosso Enxoval 🏠</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #09090b; color: #f4f4f5; font-family: system-ui, -apple-system, sans-serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen pb-24">
+
+  <!-- Topo Fixo + Progresso -->
+  <header class="sticky top-0 z-20 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 p-4">
+    <div class="max-w-xl mx-auto">
+      <div class="flex justify-between items-center mb-3">
+        <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+          <i class="fa-solid fa-house-chimney text-emerald-500"></i> Nosso Enxoval
+        </h1>
+        <span id="status-sync" class="text-xs px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400">
+          Conectando...
+        </span>
+      </div>
+
+      <!-- Barra de Progresso -->
+      <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+        <div class="flex justify-between text-xs font-medium mb-1.5">
+          <span class="text-zinc-400">Progresso Geral</span>
+          <span id="progress-text" class="text-emerald-400 font-bold">0% (0/0)</span>
+        </div>
+        <div class="w-full bg-zinc-800 rounded-full h-2.5 overflow-hidden">
+          <div id="progress-bar" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Abas de Cômodos -->
+      <div id="category-tabs" class="flex gap-2 overflow-x-auto no-scrollbar mt-3 pt-1">
+        <button onclick="setCategory('Todos')" class="cat-btn active shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-zinc-950 transition">Todos</button>
+        <button onclick="setCategory('Cozinha')" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800">🍳 Cozinha</button>
+        <button onclick="setCategory('Sala')" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800">🛋️ Sala</button>
+        <button onclick="setCategory('Quarto')" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800">🛏️ Quarto</button>
+        <button onclick="setCategory('Banheiro')" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800">🚿 Banheiro</button>
+        <button onclick="setCategory('Lavanderia')" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800">🧺 Lavanderia</button>
+      </div>
+
+      <!-- Filtro de Status e Busca -->
+      <div class="flex gap-2 mt-3">
+        <input type="text" id="search-input" oninput="renderItems()" placeholder="Buscar item..." class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500">
+        <select id="filter-status" onchange="renderItems()" class="bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-zinc-300 focus:outline-none focus:border-emerald-500">
+          <option value="all">Todos</option>
+          <option value="pending">Falta comprar</option>
+          <option value="bought">Já temos</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Lista de Itens -->
+  <main class="max-w-xl mx-auto p-4">
+    <div id="items-list" class="space-y-2.5"></div>
+  </main>
+
+  <!-- Botão Flutuante para Adicionar Item -->
+  <div class="fixed bottom-5 right-5 z-30">
+    <button onclick="openModal()" class="bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold w-14 h-14 rounded-full shadow-lg shadow-emerald-500/20 flex items-center justify-center text-xl transition transform active:scale-95">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+  <!-- Modal Adicionar Item -->
+  <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 hidden flex items-center justify-center p-4">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-sm p-5 shadow-2xl">
+      <h2 class="text-lg font-bold mb-4">Novo Item do Enxoval</h2>
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs text-zinc-400 block mb-1">Nome do Item</label>
+          <input type="text" id="new-name" placeholder="Ex: Jogo de Panelas, Airfryer..." class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="text-xs text-zinc-400 block mb-1">Cômodo</label>
+          <select id="new-category" class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500">
+            <option value="Cozinha">🍳 Cozinha</option>
+            <option value="Sala">🛋️ Sala</option>
+            <option value="Quarto">🛏️ Quarto</option>
+            <option value="Banheiro">🚿 Banheiro</option>
+            <option value="Lavanderia">🧺 Lavanderia</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs text-zinc-400 block mb-1">Observação / Preço Estimado (Opcional)</label>
+          <input type="text" id="new-notes" placeholder="Ex: Cor preta, Inox, R$ 400..." class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+      </div>
+      <div class="flex gap-2 mt-5">
+        <button onclick="closeModal()" class="w-1/2 py-2 rounded-lg bg-zinc-800 text-zinc-300 text-sm font-medium">Cancelar</button>
+        <button onclick="addItem()" class="w-1/2 py-2 rounded-lg bg-emerald-500 text-zinc-950 text-sm font-bold">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, onValue, push, update, remove, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    // Conectado direto ao seu projeto enxoval-casa-f8c41!
+    const firebaseConfig = {
+      databaseURL: "https://enxoval-casa-f8c41-default-rtdb.firebaseio.com/"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const itemsRef = ref(db, 'itens_enxoval');
+
+    let allItems = {};
+    let currentCategory = 'Todos';
+
+    // Lista inicial padrão caso o banco esteja vazio
+    const defaultItems = [
+      { name: "Geladeira", category: "Cozinha", notes: "Inox / Preta", bought: false },
+      { name: "Fogão ou Cooktop", category: "Cozinha", notes: "", bought: false },
+      { name: "Micro-ondas", category: "Cozinha", notes: "", bought: false },
+      { name: "Airfryer", category: "Cozinha", notes: "", bought: false },
+      { name: "Jogo de Panelas", category: "Cozinha", notes: "", bought: false },
+      { name: "Faqueiro / Talheres", category: "Cozinha", notes: "", bought: false },
+      { name: "Jogo de Pratos e Copos", category: "Cozinha", notes: "", bought: false },
+      { name: "Sofá Retrátil", category: "Sala", notes: "", bought: false },
+      { name: "Painel / Rack + TV", category: "Sala", notes: "", bought: false },
+      { name: "Cama Box + Colchão", category: "Quarto", notes: "", bought: false },
+      { name: "Jogo de Lençol (2x)", category: "Quarto", notes: "", bought: false },
+      { name: "Travesseiros", category: "Quarto", notes: "", bought: false },
+      { name: "Jogo de Toalhas Banho/Rosto", category: "Banheiro", notes: "", bought: false },
+      { name: "Lixeira e Porta-Sabonete", category: "Banheiro", notes: "", bought: false },
+      { name: "Máquina de Lavar Roupa", category: "Lavanderia", notes: "", bought: false },
+      { name: "Varal de Chão e Pregadores", category: "Lavanderia", notes: "", bought: false }
+    ];
+
+    // Escuta alterações em tempo real
+    onValue(itemsRef, (snapshot) => {
+      const statusEl = document.getElementById('status-sync');
+      statusEl.innerHTML = '<i class="fa-solid fa-cloud-check text-emerald-400"></i> Sincronizado';
+      
+      const data = snapshot.val();
+      if (!data) {
+        // Se for a primeira vez abrindo, popula com a lista inicial
+        defaultItems.forEach(item => push(itemsRef, item));
+        return;
+      }
+      allItems = data;
+      renderItems();
+    }, (error) => {
+      document.getElementById('status-sync').innerHTML = '<span class="text-red-400">Erro de permissão nas Regras</span>';
+      console.error(error);
+    });
+
+    window.renderItems = function() {
+      const listEl = document.getElementById('items-list');
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const statusFilter = document.getElementById('filter-status').value;
+      listEl.innerHTML = '';
+
+      const entries = Object.entries(allItems || {});
+      
+      // Atualiza barra de progresso global
+      const total = entries.length;
+      const boughtCount = entries.filter(([_, item]) => item.bought).length;
+      const pct = total > 0 ? Math.round((boughtCount / total) * 100) : 0;
+      document.getElementById('progress-text').innerText = `${pct}% (${boughtCount}/${total})`;
+      document.getElementById('progress-bar').style.width = `${pct}%`;
+
+      // Filtra itens
+      const filtered = entries.filter(([id, item]) => {
+        const matchCat = currentCategory === 'Todos' || item.category === currentCategory;
+        const matchSearch = item.name.toLowerCase().includes(search) || (item.notes && item.notes.toLowerCase().includes(search));
+        const matchStatus = statusFilter === 'all' || (statusFilter === 'bought' && item.bought) || (statusFilter === 'pending' && !item.bought);
+        return matchCat && matchSearch && matchStatus;
+      });
+
+      // Ordena: pendentes primeiro
+      filtered.sort((a, b) => Number(a[1].bought) - Number(b[1].bought));
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<div class="text-center py-12 text-zinc-500 text-sm">Nenhum item encontrado neste filtro.</div>`;
+        return;
+      }
+
+      filtered.forEach(([id, item]) => {
+        const card = document.createElement('div');
+        card.className = `flex items-center justify-between p-3.5 rounded-xl border transition ${
+          item.bought 
+            ? 'bg-zinc-900/40 border-zinc-800/60 opacity-60' 
+            : 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3.5 flex-1 cursor-pointer" onclick="toggleItem('${id}', ${!item.bought})">
+            <div class="w-6 h-6 rounded-lg flex items-center justify-center border transition ${
+              item.bought ? 'bg-emerald-500 border-emerald-500 text-zinc-950' : 'border-zinc-600 bg-zinc-950'
+            }">
+              ${item.bought ? '<i class="fa-solid fa-check text-xs font-bold"></i>' : ''}
+            </div>
+            <div>
+              <p class="text-sm font-medium ${item.bought ? 'line-through text-zinc-500' : 'text-zinc-100'}">${item.name}</p>
+              <div class="flex items-center gap-2 mt-0.5">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">${item.category}</span>
+                ${item.notes ? `<span class="text-xs text-zinc-400">${item.notes}</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <button onclick="deleteItem('${id}')" class="text-zinc-600 hover:text-red-400 p-2 text-xs transition">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        `;
+        listEl.appendChild(card);
+      });
+    };
+
+    window.toggleItem = function(id, newState) {
+      update(ref(db, `itens_enxoval/${id}`), { bought: newState });
+    };
+
+    window.addItem = function() {
+      const name = document.getElementById('new-name').value.trim();
+      const category = document.getElementById('new-category').value;
+      const notes = document.getElementById('new-notes').value.trim();
+      if (!name) return;
+
+      push(itemsRef, { name, category, notes, bought: false });
+      document.getElementById('new-name').value = '';
+      document.getElementById('new-notes').value = '';
+      closeModal();
+    };
+
+    window.deleteItem = function(id) {
+      if (confirm('Deseja excluir este item da lista?')) {
+        remove(ref(db, `itens_enxoval/${id}`));
+      }
+    };
+
+    window.setCategory = function(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.innerText.includes(cat)) {
+          btn.className = "cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-zinc-950 transition";
+        } else {
+          btn.className = "cat-btn shrink-0 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800";
+        }
+      });
+      renderItems();
+    };
+
+    window.openModal = () => document.getElementById('modal').classList.remove('hidden');
+    window.closeModal = () => document.getElementById('modal').classList.add('hidden');
+  </script>
+</body>
+</html>
