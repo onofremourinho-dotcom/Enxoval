@@ -6,15 +6,17 @@
   <title>Enxoval Isabela & Ramon 🤍</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     body { 
-      background-color: #f8fafc; 
+      background-color: #faf9f6; 
+      background-image: radial-gradient(#e5e7eb 0.8px, transparent 0.8px);
+      background-size: 20px 20px;
       color: #1e293b; 
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
     }
     .font-serif-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -22,54 +24,83 @@
 </head>
 <body class="min-h-screen pb-28">
 
-  <!-- Topo Fixo Estilizado White -->
-  <header class="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+  <!-- Cabeçalho Decorado -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-sm sticky top-0 z-20">
+    <!-- Faixa decorativa superior -->
+    <div class="h-1.5 w-full bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-400"></div>
+
     <div class="max-w-2xl mx-auto px-4 pt-4 pb-3">
       
-      <!-- Cabeçalho Casal -->
-      <div class="flex justify-between items-start mb-4">
-        <div>
-          <span class="text-[11px] font-semibold uppercase tracking-widest text-emerald-600 block mb-0.5">Checklist da Casa Nova</span>
-          <h1 class="text-2xl font-bold text-slate-900 font-serif-title flex items-center gap-2">
-            Isabela <span class="text-emerald-500 text-lg">&amp;</span> Ramon
-          </h1>
+      <!-- Topo: Monograma + Nomes + Status -->
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-3.5">
+          <!-- Monograma do Casal -->
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50 border border-emerald-200/70 flex flex-col items-center justify-center shadow-sm shrink-0">
+            <span class="font-serif-title text-lg font-bold text-emerald-800 leading-none">I<span class="text-amber-500 font-normal">&amp;</span>R</span>
+            <i class="fa-solid fa-heart text-[8px] text-rose-400 mt-1"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">Nosso Lar</span>
+              <span class="text-xs text-amber-500">✨</span>
+            </div>
+            <h1 class="text-3xl font-bold text-slate-900 font-serif-title tracking-wide leading-tight mt-0.5">
+              Isabela <span class="text-emerald-600 italic font-normal">&amp;</span> Ramon
+            </h1>
+          </div>
         </div>
-        <span id="status-sync" class="text-xs px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 font-medium flex items-center gap-1.5">
-          <i class="fa-solid fa-spinner fa-spin text-slate-400"></i> Conectando...
+
+        <span id="status-sync" class="text-[11px] px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-stone-500 font-medium flex items-center gap-1.5 shadow-inner">
+          <i class="fa-solid fa-spinner fa-spin text-stone-400"></i> Conectando
         </span>
       </div>
 
-      <!-- Card de Progresso -->
-      <div class="bg-gradient-to-r from-slate-50 to-emerald-50/40 p-3.5 rounded-2xl border border-slate-200/90 shadow-inner">
-        <div class="flex justify-between items-center text-xs font-semibold mb-2">
-          <span class="text-slate-600 flex items-center gap-1.5">
-            <i class="fa-solid fa-chart-pie text-emerald-600"></i> Progresso do Nosso Lar
-          </span>
-          <span id="progress-text" class="text-emerald-700 bg-emerald-100/80 px-2.5 py-0.5 rounded-full font-bold">0% (0/0)</span>
+      <!-- Painel de Progresso Decorado -->
+      <div class="bg-gradient-to-br from-white via-stone-50/50 to-emerald-50/40 p-4 rounded-2xl border border-stone-200/90 shadow-sm">
+        <div class="grid grid-cols-3 gap-2 mb-3 text-center">
+          <div class="bg-white p-2 rounded-xl border border-stone-100 shadow-sm">
+            <span class="block text-[10px] uppercase tracking-wider text-stone-400 font-semibold">Total</span>
+            <span id="stat-total" class="text-base font-bold text-slate-800">0</span>
+          </div>
+          <div class="bg-emerald-50/70 p-2 rounded-xl border border-emerald-100 shadow-sm">
+            <span class="block text-[10px] uppercase tracking-wider text-emerald-700 font-semibold">Já Temos</span>
+            <span id="stat-bought" class="text-base font-bold text-emerald-600">0</span>
+          </div>
+          <div class="bg-amber-50/70 p-2 rounded-xl border border-amber-100 shadow-sm">
+            <span class="block text-[10px] uppercase tracking-wider text-amber-700 font-semibold">Faltam</span>
+            <span id="stat-pending" class="text-base font-bold text-amber-600">0</span>
+          </div>
         </div>
-        <div class="w-full bg-slate-200/80 rounded-full h-2.5 overflow-hidden">
-          <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+
+        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+          <span class="text-stone-600 flex items-center gap-1.5">
+            <i class="fa-solid fa-house-chimney-heart text-emerald-600"></i> Evolução do Enxoval
+          </span>
+          <span id="progress-text" class="text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full font-bold">0%</span>
+        </div>
+        <div class="w-full bg-stone-200/80 rounded-full h-2.5 overflow-hidden p-0.5">
+          <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
         </div>
       </div>
 
-      <!-- Abas de Cômodos -->
+      <!-- Abas de Cômodos com Contador -->
       <div id="category-tabs" class="flex gap-2 overflow-x-auto no-scrollbar mt-3.5 pt-0.5">
-        <button onclick="setCategory('Todos')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition">Todos</button>
-        <button onclick="setCategory('Cozinha')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🍳 Cozinha</button>
-        <button onclick="setCategory('Sala')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🛋️ Sala</button>
-        <button onclick="setCategory('Quarto')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🛏️ Quarto</button>
-        <button onclick="setCategory('Banheiro')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🚿 Banheiro</button>
-        <button onclick="setCategory('Lavanderia')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🧺 Lavanderia</button>
-        <button onclick="setCategory('Outros')" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition">🛠️ Outros</button>
+        <button onclick="setCategory('Todos')" data-cat="Todos" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition">✨ Todos</button>
+        <button onclick="setCategory('Cozinha')" data-cat="Cozinha" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🍳 Cozinha</button>
+        <button onclick="setCategory('Sala')" data-cat="Sala" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛋️ Sala</button>
+        <button onclick="setCategory('Quarto')" data-cat="Quarto" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛏️ Quarto</button>
+        <button onclick="setCategory('Banheiro')" data-cat="Banheiro" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🚿 Banheiro</button>
+        <button onclick="setCategory('Lavanderia')" data-cat="Lavanderia" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🧺 Lavanderia</button>
+        <button onclick="setCategory('Outros')" data-cat="Outros" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛠️ Casa &amp; Outros</button>
       </div>
 
       <!-- Busca e Filtro -->
       <div class="flex gap-2 mt-3">
         <div class="relative flex-1">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-          <input type="text" id="search-input" oninput="renderItems()" placeholder="Buscar item (ex: Airfryer, Toalha)..." class="w-full bg-slate-100/80 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 transition">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+          <input type="text" id="search-input" oninput="renderItems()" placeholder="Buscar item no enxoval..." class="w-full bg-stone-100/90 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-emerald-500 transition">
         </div>
-        <select id="filter-status" onchange="renderItems()" class="bg-slate-100/80 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:bg-white focus:border-emerald-500">
+        <select id="filter-status" onchange="renderItems()" class="bg-stone-100/90 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:bg-white focus:border-emerald-500">
           <option value="all">Todos</option>
           <option value="pending">Falta comprar</option>
           <option value="bought">Já temos</option>
@@ -82,50 +113,53 @@
   <main class="max-w-2xl mx-auto p-4">
     <div id="items-list" class="space-y-2.5"></div>
 
-    <!-- Rodapé de Ferramentas -->
-    <div class="mt-12 pt-6 border-t border-slate-200 text-center">
-      <p class="text-xs text-slate-400 mb-3">Quer carregar todos os 100 itens da casa vazia?</p>
-      <button onclick="loadFullList()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-sm transition">
-        <i class="fa-solid fa-wand-magic-sparkles text-emerald-500"></i> Carregar / Resetar Lista Completa (100 Itens)
+    <!-- Rodapé Decorado + Botão de Resetar sem Duplicar -->
+    <div class="mt-14 pt-8 pb-4 border-t border-stone-200/80 text-center">
+      <div class="inline-flex items-center gap-2 text-stone-400 text-xs font-serif-title italic text-base mb-3">
+        <span>✦</span> Construindo o nosso lar <span>✦</span>
+      </div>
+      <p class="text-xs text-stone-400 mb-3">Se a lista estiver duplicada ou quiser recarregar os 165 itens originais:</p>
+      <button onclick="loadFullList()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-white border border-stone-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800 shadow-sm transition">
+        <i class="fa-solid fa-rotate text-emerald-600"></i> Limpar Duplicados e Carregar 165 Itens
       </button>
     </div>
   </main>
 
   <!-- Botão Flutuante (+) -->
   <div class="fixed bottom-6 right-6 z-30">
-    <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold w-14 h-14 rounded-2xl shadow-xl shadow-slate-900/20 flex items-center justify-center text-xl transition transform active:scale-95">
+    <button onclick="openModal()" class="bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold w-14 h-14 rounded-2xl shadow-xl shadow-emerald-600/30 flex items-center justify-center text-xl transition transform active:scale-95">
       <i class="fa-solid fa-plus"></i>
     </button>
   </div>
 
   <!-- Modal Adicionar / Editar Item -->
   <div id="modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden flex items-center justify-center p-4">
-    <div class="bg-white border border-slate-100 rounded-3xl w-full max-w-sm p-6 shadow-2xl">
-      <h2 id="modal-title" class="text-lg font-bold text-slate-900 mb-4">Novo Item do Enxoval</h2>
+    <div class="bg-white border border-stone-100 rounded-3xl w-full max-w-sm p-6 shadow-2xl">
+      <h2 id="modal-title" class="text-xl font-bold text-slate-900 font-serif-title mb-4">Novo Item do Enxoval</h2>
       <input type="hidden" id="edit-id">
       <div class="space-y-3.5">
         <div>
-          <label class="text-xs font-semibold text-slate-500 block mb-1">Nome do Item</label>
-          <input type="text" id="new-name" placeholder="Ex: Jogo de Panelas, Cortina..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
+          <label class="text-xs font-semibold text-stone-500 block mb-1">Nome do Item</label>
+          <input type="text" id="new-name" placeholder="Ex: Jogo de Panelas, Cortina..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
         </div>
         <div>
-          <label class="text-xs font-semibold text-slate-500 block mb-1">Cômodo</label>
-          <select id="new-category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
+          <label class="text-xs font-semibold text-stone-500 block mb-1">Cômodo</label>
+          <select id="new-category" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
             <option value="Cozinha">🍳 Cozinha</option>
             <option value="Sala">🛋️ Sala</option>
             <option value="Quarto">🛏️ Quarto</option>
             <option value="Banheiro">🚿 Banheiro</option>
             <option value="Lavanderia">🧺 Lavanderia</option>
-            <option value="Outros">🛠️ Outros</option>
+            <option value="Outros">🛠️ Casa &amp; Outros</option>
           </select>
         </div>
         <div>
-          <label class="text-xs font-semibold text-slate-500 block mb-1">Observação / Marca / Preço (Opcional)</label>
-          <input type="text" id="new-notes" placeholder="Ex: Inox, Cor preta, R$ 350..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
+          <label class="text-xs font-semibold text-stone-500 block mb-1">Observação / Marca / Preço (Opcional)</label>
+          <input type="text" id="new-notes" placeholder="Ex: Inox, Cor preta, R$ 350..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
         </div>
       </div>
       <div class="flex gap-2.5 mt-6">
-        <button onclick="closeModal()" class="w-1/2 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-semibold transition">Cancelar</button>
+        <button onclick="closeModal()" class="w-1/2 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-sm font-semibold transition">Cancelar</button>
         <button onclick="saveItem()" class="w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-md shadow-emerald-600/20 transition">Salvar</button>
       </div>
     </div>
@@ -146,141 +180,258 @@
 
     let allItems = {};
     let currentCategory = 'Todos';
+    let isResetting = false;
 
-    // 100 Itens Essenciais para Casa Totalmente Vazia
+    // Cores e ícones decorativos por categoria
+    const categoryStyles = {
+      "Cozinha": { badge: "bg-amber-50 text-amber-700 border-amber-200/80", icon: "🍳" },
+      "Sala": { badge: "bg-indigo-50 text-indigo-700 border-indigo-200/80", icon: "🛋️" },
+      "Quarto": { badge: "bg-rose-50 text-rose-700 border-rose-200/80", icon: "🛏️" },
+      "Banheiro": { badge: "bg-cyan-50 text-cyan-700 border-cyan-200/80", icon: "🚿" },
+      "Lavanderia": { badge: "bg-teal-50 text-teal-700 border-teal-200/80", icon: "🧺" },
+      "Outros": { badge: "bg-stone-100 text-stone-700 border-stone-200/80", icon: "🛠️" }
+    };
+
+    // 165 Itens Individuais para Casa Totalmente Vazia
     const fullHouseItems = [
-      // COZINHA - Eletros e Móveis
-      { name: "Geladeira / Refrigerador", category: "Cozinha", notes: "Eletrodoméstico", bought: false },
-      { name: "Fogão ou Cooktop + Forno", category: "Cozinha", notes: "Eletrodoméstico", bought: false },
-      { name: "Botijão de Gás + Mangueira/Regulador", category: "Cozinha", notes: "Essencial", bought: false },
+      // ================= COZINHA (74 ITENS) =================
+      // Eletrodomésticos e Móveis
+      { name: "Geladeira Frost Free", category: "Cozinha", notes: "Eletrodoméstico essencial", bought: false },
+      { name: "Fogão ou Cooktop", category: "Cozinha", notes: "4 ou 5 bocas", bought: false },
+      { name: "Forno Elétrico ou de Embutir", category: "Cozinha", notes: "Se optar por Cooktop", bought: false },
+      { name: "Botijão de Gás (P13)", category: "Cozinha", notes: "Casco + Carga", bought: false },
+      { name: "Mangueira e Regulador de Gás", category: "Cozinha", notes: "Dentro da validade", bought: false },
       { name: "Micro-ondas", category: "Cozinha", notes: "Eletrodoméstico", bought: false },
-      { name: "Airfryer (Fritadeira Elétrica)", category: "Cozinha", notes: "Eletroportátil", bought: false },
+      { name: "Depurador de Ar / Coifa", category: "Cozinha", notes: "Acima do fogão", bought: false },
+      { name: "Purificador / Filtro de Água", category: "Cozinha", notes: "Água gelada/natural", bought: false },
+      { name: "Airfryer (Fritadeira sem Óleo)", category: "Cozinha", notes: "Eletroportátil", bought: false },
       { name: "Liquidificador", category: "Cozinha", notes: "Eletroportátil", bought: false },
-      { name: "Sanduicheira / Grill", category: "Cozinha", notes: "Eletroportátil", bought: false },
-      { name: "Cafeteira ou Garrafa Térmica + Coador", category: "Cozinha", notes: "Café", bought: false },
-      { name: "Filtro de Água / Purificador", category: "Cozinha", notes: "Água potável", bought: false },
+      { name: "Batedeira", category: "Cozinha", notes: "Bolos e massas", bought: false },
+      { name: "Sanduicheira / Grill Elétrico", category: "Cozinha", notes: "Lanches rápidos", bought: false },
+      { name: "Cafeteira Elétrica", category: "Cozinha", notes: "Café", bought: false },
+      { name: "Mixer / Processador de Alimentos", category: "Cozinha", notes: "Temperos e pastas", bought: false },
+      { name: "Chaleira Elétrica", category: "Cozinha", notes: "Ferver água rápido", bought: false },
+      { name: "Balança Digital de Cozinha", category: "Cozinha", notes: "Receitas e dieta", bought: false },
       { name: "Armário de Cozinha", category: "Cozinha", notes: "Móvel", bought: false },
       { name: "Mesa de Jantar + Cadeiras", category: "Cozinha", notes: "Móvel", bought: false },
 
-      // COZINHA - Panelas e Preparo
-      { name: "Jogo de Panelas (Caçarolas e Frigideiras)", category: "Cozinha", notes: "Antiaderente ou Inox", bought: false },
+      // Panelas e Forno
+      { name: "Jogo de Panelas (Caçarolas e Panelas)", category: "Cozinha", notes: "Inox, Cerâmica ou Antiaderente", bought: false },
       { name: "Panela de Pressão", category: "Cozinha", notes: "4,5L ou 6L", bought: false },
-      { name: "Leiteira / Canecão / Chaleira", category: "Cozinha", notes: "Ferver água/leite", bought: false },
-      { name: "Assadeiras / Formas de Forno (2 ou 3 tam.)", category: "Cozinha", notes: "Alumínio ou Vidro", bought: false },
-      { name: "Travessas / Marinex de Vidro", category: "Cozinha", notes: "Para servir e assar", bought: false },
-      { name: "Faqueiro Completo (Garfos, Facas, Colheres)", category: "Cozinha", notes: "Uso diário", bought: false },
-      { name: "Kit Facas de Corte (Carne, Legumes, Pão)", category: "Cozinha", notes: "Preparo", bought: false },
-      { name: "Tábuas de Corte (2 un: Carne e Legumes)", category: "Cozinha", notes: "Bambu, polietileno ou vidro", bought: false },
-      { name: "Kit Utensílios (Concha, Espátula, Escumadeira, Pegador)", category: "Cozinha", notes: "Silicone / Inox", bought: false },
-      { name: "Escorredor de Macarrão e Escorredor de Arroz", category: "Cozinha", notes: "Inox ou plástico", bought: false },
-      { name: "Ralador de 4 faces e Descascador de Legumes", category: "Cozinha", notes: "Preparo", bought: false },
-      { name: "Abridor de Latas/Garrafas e Saca-rolhas", category: "Cozinha", notes: "Utensílios", bought: false },
-      { name: "Tesoura de Cozinha", category: "Cozinha", notes: "Utensílios", bought: false },
-      { name: "Peneiras (Pequena, Média, Grande)", category: "Cozinha", notes: "Utensílios", bought: false },
-      { name: "Espremedor de Alho e Espremedor de Limão", category: "Cozinha", notes: "Temperos", bought: false },
-      { name: "Colheres e Copo Medidor", category: "Cozinha", notes: "Receitas", bought: false },
-      { name: "Tigelas / Bowls de Preparo (Vários tamanhos)", category: "Cozinha", notes: "Vidro ou Inox", bought: false },
+      { name: "Frigideira Grande Antiaderente", category: "Cozinha", notes: "Grelhados e ovos", bought: false },
+      { name: "Frigideira Pequena / Omeleteira", category: "Cozinha", notes: "Dia a dia", bought: false },
+      { name: "Leiteira / Fervedor / Canecão", category: "Cozinha", notes: "Líquidos", bought: false },
+      { name: "Cuscuzeira", category: "Cozinha", notes: "Opcional", bought: false },
+      { name: "Assadeira Retangular (Pequena, Média, Grande)", category: "Cozinha", notes: "Alumínio", bought: false },
+      { name: "Forma Redonda com Furo no Meio", category: "Cozinha", notes: "Para bolos e pudins", bought: false },
+      { name: "Forma de Pizza", category: "Cozinha", notes: "Alumínio", bought: false },
+      { name: "Refratários / Travessas de Vidro (Marinex)", category: "Cozinha", notes: "2 ou 3 tamanhos para forno", bought: false },
 
-      // COZINHA - Louças, Pia e Organização
-      { name: "Aparelho de Jantar (Pratos Rasos, Fundos, Sobremesa)", category: "Cozinha", notes: "6 a 12 pessoas", bought: false },
-      { name: "Jogo de Copos (Água / Suco - 6 a 12 un)", category: "Cozinha", notes: "Vidro", bought: false },
-      { name: "Xícaras ou Canecas (Café / Chá)", category: "Cozinha", notes: "6 unidades", bought: false },
-      { name: "Jogo de Taças (Vinho / Sobremesa)", category: "Cozinha", notes: "Opcional", bought: false },
-      { name: "Jarra de Suco / Água (1 ou 2 un)", category: "Cozinha", notes: "Vidro", bought: false },
-      { name: "Garrafas de Água para Geladeira", category: "Cozinha", notes: "2 unidades", bought: false },
-      { name: "Kit Potes Herméticos / Tupperware (Vários tamanhos)", category: "Cozinha", notes: "Guardar alimentos e freezer", bought: false },
-      { name: "Porta-temperos e Saleiro / Pimenteiro", category: "Cozinha", notes: "Organização", bought: false },
-      { name: "Porta-mantimentos (Arroz, Feijão, Açúcar, Café, Farinha)", category: "Cozinha", notes: "Organização", bought: false },
+      // Preparo e Utensílios
+      { name: "Kit Facas de Cozinha (Chef, Carne, Legumes, Pão)", category: "Cozinha", notes: "Corte", bought: false },
+      { name: "Afiador / Chaira de Facas", category: "Cozinha", notes: "Manter corte", bought: false },
+      { name: "Tábua de Corte para Carnes", category: "Cozinha", notes: "Bambu ou Polietileno", bought: false },
+      { name: "Tábua de Corte para Legumes/Pães", category: "Cozinha", notes: "Evitar contaminação cruzada", bought: false },
+      { name: "Tesoura de CozinhaTrinchar", category: "Cozinha", notes: "Multiuso", bought: false },
+      { name: "Kit Utensílios de Silicone (Concha, Espátula, Escumadeira, Colher)", category: "Cozinha", notes: "Não risca panelas", bought: false },
+      { name: "Pegador de Macarrão e Pegador de Salada/Carne", category: "Cozinha", notes: "Inox / Silicone", bought: false },
+      { name: "Fouet (Batedor de Ovos Manual)", category: "Cozinha", notes: "Claras e massas", bought: false },
+      { name: "Ralador de 4 Faces", category: "Cozinha", notes: "Queijo e legumes", bought: false },
+      { name: "Descascador de Legumes", category: "Cozinha", notes: "Batata, cenoura", bought: false },
+      { name: "Espremedor / Amassador de Alho", category: "Cozinha", notes: "Inox", bought: false },
+      { name: "Amassador de Batatas / Purê", category: "Cozinha", notes: "Inox", bought: false },
+      { name: "Espremedor de Limão / Laranja", category: "Cozinha", notes: "Manual", bought: false },
+      { name: "Escorredor de Macarrão / Massa", category: "Cozinha", notes: "Inox ou silicone", bought: false },
+      { name: "Escorredor / Lavador de Arroz", category: "Cozinha", notes: "Praticidade", bought: false },
+      { name: "Jogo de Peneiras (Pequena, Média, Grande)", category: "Cozinha", notes: "Sucos e farinha", bought: false },
+      { name: "Abridor de Latas e Garrafas", category: "Cozinha", notes: "Inox", bought: false },
+      { name: "Saca-rolhas", category: "Cozinha", notes: "Vinhos", bought: false },
+      { name: "Cortador de Pizza", category: "Cozinha", notes: "Carretilha", bought: false },
+      { name: "Colher de Sorvete", category: "Cozinha", notes: "Sobremesa", bought: false },
+      { name: "Pincel Culinário de Silicone", category: "Cozinha", notes: "Untar formas", bought: false },
+      { name: "Rolo de Abrir Massa", category: "Cozinha", notes: "Massas e tortas", bought: false },
+      { name: "Copo e Colheres Medidoras", category: "Cozinha", notes: "Receitas exatas", bought: false },
+      { name: "Conjunto de Tigelas / Bowls de Preparo", category: "Cozinha", notes: "Inox ou Vidro (3 tamanhos)", bought: false },
+      { name: "Saladeira Grande", category: "Cozinha", notes: "Servir à mesa", bought: false },
+      { name: "Funil", category: "Cozinha", notes: "Líquidos", bought: false },
+
+      // Mesa Posta e Louças
+      { name: "Aparelho de Jantar (Pratos Rasos, Fundos e Sobremesa)", category: "Cozinha", notes: "6 ou 12 lugares", bought: false },
+      { name: "Faqueiro Completo (Garfos, Facas e Colheres de Mesa/Chá)", category: "Cozinha", notes: "Inox (24 a 42 peças)", bought: false },
+      { name: "Jogo de Copos de Vidro (Água / Suco)", category: "Cozinha", notes: "6 a 12 unidades", bought: false },
+      { name: "Jogo de Xícaras ou Canecas", category: "Cozinha", notes: "Café e Chá (6 un)", bought: false },
+      { name: "Jogo de Taças (Vinho / Água / Sobremesa)", category: "Cozinha", notes: "Receber visitas", bought: false },
+      { name: "Jarra de Vidro para Suco/Água", category: "Cozinha", notes: "1,5L a 2L", bought: false },
+      { name: "Garrafa Térmica de Café + Suporte de Filtro", category: "Cozinha", notes: "Café passado", bought: false },
+      { name: "Açucareiro e Manteigueira", category: "Cozinha", notes: "Café da manhã", bought: false },
+      { name: "Jogo Americano / Sousplat (6 unidades)", category: "Cozinha", notes: "Mesa posta", bought: false },
+      { name: "Toalha de Mesa (2 unidades)", category: "Cozinha", notes: "Dia a dia e visitas", bought: false },
+      { name: "Guardanapos de Papel + Porta-guardanapos", category: "Cozinha", notes: "Mesa", bought: false },
+      { name: "Descanso de Panela (2 ou 3 unidades)", category: "Cozinha", notes: "Proteger a mesa", bought: false },
+
+      // Organização e Pia
+      { name: "Kit Potes Herméticos / Tupperware (Vários tamanhos)", category: "Cozinha", notes: "Geladeira e marmitas", bought: false },
+      { name: "Potes Porta-mantimentos (Arroz, Feijão, Açúcar, Café, Sal)", category: "Cozinha", notes: "Armário / Bancada", bought: false },
+      { name: "Porta-temperos / Condimentos + Saleiro", category: "Cozinha", notes: "Bancada", bought: false },
+      { name: "Garrafas de Água para Geladeira (2 un)", category: "Cozinha", notes: "Vidro ou Acrílico", bought: false },
+      { name: "Formas de Gelo de Silicone (2 a 4 un)", category: "Cozinha", notes: "Freezer", bought: false },
       { name: "Escorredor de Louça para Pia", category: "Cozinha", notes: "Inox ou plástico", bought: false },
-      { name: "Dispenser de Detergente e Porta-esponja", category: "Cozinha", notes: "Pia", bought: false },
-      { name: "Lixeira de Pia + Lixeira de Chão da Cozinha", category: "Cozinha", notes: "Com tampa/pedal", bought: false },
-      { name: "Organizador de Talheres para Gaveta", category: "Cozinha", notes: "Gaveta", bought: false },
-      { name: "Panos de Prato (8 a 10 unidades)", category: "Cozinha", notes: "Algodão", bought: false },
-      { name: "Luva Térmica e Descanso de Panela", category: "Cozinha", notes: "Silicone / Tecido", bought: false },
-      { name: "Jogo Americano, Sousplat e Toalha de Mesa", category: "Cozinha", notes: "Mesa posta", bought: false },
-      { name: "Formas de Gelo", category: "Cozinha", notes: "Silicone", bought: false },
+      { name: "Dispenser de Detergente e Porta-esponja", category: "Cozinha", notes: "Bancada da pia", bought: false },
+      { name: "Lixeira de Pia + Lixeira Grande com Pedal", category: "Cozinha", notes: "Cozinha", bought: false },
+      { name: "Divisor / Organizador de Talheres para Gaveta", category: "Cozinha", notes: "Gaveta", bought: false },
+      { name: "Panos de Prato (10 unidades)", category: "Cozinha", notes: "100% Algodão", bought: false },
+      { name: "Luva Térmica de Forno", category: "Cozinha", notes: "Silicone ou tecido", bought: false },
+      { name: "Rodo Pequeno de Pia", category: "Cozinha", notes: "Secar bancada", bought: false },
+      { name: "Suporte para Papel Toalha, Papel Alumínio e Filme PVC", category: "Cozinha", notes: "Praticidade", bought: false },
 
-      // SALA
-      { name: "Sofá Retrátil / Reclinável", category: "Sala", notes: "Móvel principal", bought: false },
+      // ================= SALA (15 ITENS) =================
+      { name: "Sofá Retrátil e Reclinável", category: "Sala", notes: "Móvel principal", bought: false },
       { name: "Painel ou Rack para TV", category: "Sala", notes: "Móvel", bought: false },
-      { name: "Smart TV", category: "Sala", notes: "Eletrônico", bought: false },
-      { name: "Cortina da Sala + Varão", category: "Sala", notes: "Decoração / Privacidade", bought: false },
-      { name: "Tapete da Sala", category: "Sala", notes: "Conforto", bought: false },
-      { name: "Almofadas Decorativas (4 un) e Manta de Sofá", category: "Sala", notes: "Decoração", bought: false },
-      { name: "Mesa de Centro ou Lateral", category: "Sala", notes: "Opcional", bought: false },
-      { name: "Capacho de Entrada (Tapete da Porta)", category: "Sala", notes: "Bem-vindos", bought: false },
+      { name: "Smart TV da Sala", category: "Sala", notes: "50\" ou maior", bought: false },
+      { name: "Suporte Fixo/Articulado para TV", category: "Sala", notes: "Parede ou painel", bought: false },
+      { name: "Cortina da Sala + Varão", category: "Sala", notes: "Privacidade e charme", bought: false },
+      { name: "Tapete Grande para Sala", category: "Sala", notes: "Conforto", bought: false },
+      { name: "Almofadas Decorativas + Capas (4 unidades)", category: "Sala", notes: "Sofá", bought: false },
+      { name: "Manta Decorativa para Sofá", category: "Sala", notes: "Decoração e conforto", bought: false },
+      { name: "Mesa de Centro ou Mesa Lateral de Apoio", category: "Sala", notes: "Móvel", bought: false },
+      { name: "Aparador / Buffet (Sala de Jantar)", category: "Sala", notes: "Opcional", bought: false },
+      { name: "Quadros Decorativos", category: "Sala", notes: "Personalidade do casal", bought: false },
+      { name: "Vasos / Plantas Decorativas", category: "Sala", notes: "Vida no ambiente", bought: false },
+      { name: "Luminária de Piso ou Abajur", category: "Sala", notes: "Luz aconchegante", bought: false },
+      { name: "Porta-chaves de Entrada", category: "Sala", notes: "Organização", bought: false },
+      { name: "Capacho de Entrada (Tapete da Porta)", category: "Sala", notes: "Área externa da porta", bought: false },
 
-      // QUARTO
-      { name: "Cama Box + Colchão Casal/Queen", category: "Quarto", notes: "Móvel essencial", bought: false },
-      { name: "Cabeceira da Cama", category: "Quarto", notes: "Móvel", bought: false },
-      { name: "Guarda-roupa", category: "Quarto", notes: "Móvel essencial", bought: false },
-      { name: "Mesas de Cabeceira (Criado-mudo - 2 un)", category: "Quarto", notes: "Móvel", bought: false },
-      { name: "Travesseiros Bons (4 unidades)", category: "Quarto", notes: "Conforto", bought: false },
-      { name: "Protetor Impermeável de Colchão e Travesseiros", category: "Quarto", notes: "Proteção essencial", bought: false },
-      { name: "Jogos de Cama Completo / Lençol (3 jogos)", category: "Quarto", notes: "Algodão", bought: false },
-      { name: "Edredom / Cobertor Quente (2 unidades)", category: "Quarto", notes: "Inverno", bought: false },
-      { name: "Cobre-leito / Colcha para o dia a dia (2 un)", category: "Quarto", notes: "Cama posta", bought: false },
-      { name: "Cortina Blackout + Varão (Quarto)", category: "Quarto", notes: "Bloquear claridade", bought: false },
-      { name: "Cabides Padronizados (40 a 60 unidades)", category: "Quarto", notes: "Veludo, madeira ou acrílico", bought: false },
-      { name: "Espelho de Corpo Inteiro", category: "Quarto", notes: "Quarto ou Closet", bought: false },
-      { name: "Ventilador ou Ar-Condicionado", category: "Quarto", notes: "Climatização", bought: false },
+      // ================= QUARTO (22 ITENS) =================
+      { name: "Cama Box (Base)", category: "Quarto", notes: "Casal, Queen ou King", bought: false },
+      { name: "Colchão do Casal", category: "Quarto", notes: "Molas ensacadas / Espuma", bought: false },
+      { name: "Cabeceira de Cama", category: "Quarto", notes: "Estofada ou madeira", bought: false },
+      { name: "Guarda-roupa Grande", category: "Quarto", notes: "Móvel essencial", bought: false },
+      { name: "Mesas de Cabeceira / Criado-mudo (2 un)", category: "Quarto", notes: "Lados da cama", bought: false },
+      { name: "Travesseiros para Dormir (4 unidades)", category: "Quarto", notes: "Conforto", bought: false },
+      { name: "Capa Protetora Impermeável para Colchão", category: "Quarto", notes: "Indispensável p/ durabilidade", bought: false },
+      { name: "Capas Protetoras para Travesseiros (4 un)", category: "Quarto", notes: "Higiene", bought: false },
+      { name: "Jogos de Lençol Completos (3 a 4 jogos)", category: "Quarto", notes: "Lençol de elástico + cima + fronhas", bought: false },
+      { name: "Fronhas Avulsas Extras (4 unidades)", category: "Quarto", notes: "Troca rápida", bought: false },
+      { name: "Edredom Quente (2 unidades)", category: "Quarto", notes: "Para o frio", bought: false },
+      { name: "Cobertor / Manta de Microfibra (2 un)", category: "Quarto", notes: "Meia-estação", bought: false },
+      { name: "Cobre-leito / Colcha (2 unidades)", category: "Quarto", notes: "Cama arrumada no dia a dia", bought: false },
+      { name: "Cortina com Blackout + Varão (Quarto)", category: "Quarto", notes: "Dormir no escuro", bought: false },
+      { name: "Tapete de Quarto (Beira da Cama)", category: "Quarto", notes: "Pisar quentinho ao acordar", bought: false },
+      { name: "Cabides Padronizados (50 a 60 unidades)", category: "Quarto", notes: "Veludo ou madeira", bought: false },
+      { name: "Organizadores de Gaveta (Colmeias p/ roupas íntimas)", category: "Quarto", notes: "Ordem no guarda-roupa", bought: false },
+      { name: "Espelho de Corpo Inteiro", category: "Quarto", notes: "Parede ou chão", bought: false },
+      { name: "Abajur / Luminária de Cabeceira (2 un)", category: "Quarto", notes: "Leitura à noite", bought: false },
+      { name: "Sapateira", category: "Quarto", notes: "Organizar calçados", bought: false },
+      { name: "Ar-condicionado ou Ventilador Silencioso", category: "Quarto", notes: "Climatização", bought: false },
+      { name: "TV para o Quarto + Suporte", category: "Quarto", notes: "Opcional", bought: false },
 
-      // BANHEIRO
-      { name: "Chuveiro Elétrico + Fita Veda Rosca", category: "Banheiro", notes: "Casa nova costuma vir sem!", bought: false },
-      { name: "Jogos de Toalhas de Banho e Rosto (4 jogos)", category: "Banheiro", notes: "100% Algodão", bought: false },
-      { name: "Tapetes de Banheiro / Pisos Antiderrapantes (3 un)", category: "Banheiro", notes: "Saída do box", bought: false },
+      // ================= BANHEIRO (18 ITENS) =================
+      { name: "Chuveiro Elétrico / Ducha", category: "Banheiro", notes: "Casa nova costuma vir sem!", bought: false },
+      { name: "Fita Veda Rosca (Para instalar chuveiro/torneiras)", category: "Banheiro", notes: "Instalação", bought: false },
+      { name: "Jogos de Toalhas de Banho e Rosto (4 jogos)", category: "Banheiro", notes: "8 banho + 4 rosto (100% algodão)", bought: false },
+      { name: "Toalhas de Piso / Tapete Antiderrapante (3 un)", category: "Banheiro", notes: "Saída do box", bought: false },
+      { name: "Roupões de Banho (Isabela e Ramon)", category: "Banheiro", notes: "Conforto", bought: false },
       { name: "Lixeira de Banheiro com Pedal", category: "Banheiro", notes: "Inox ou plástico", bought: false },
-      { name: "Escova Sanitária com Suporte", category: "Banheiro", notes: "Higiene", bought: false },
-      { name: "Porta-sabonete Líquido e Porta-escova de Dentes", category: "Banheiro", notes: "Bancada", bought: false },
-      { name: "Suporte Porta-Shampoo (Dentro do Box)", category: "Banheiro", notes: "Parede ou canto", bought: false },
-      { name: "Espelho ou Armarinho de Banheiro", category: "Banheiro", notes: "Acima da pia", bought: false },
-      { name: "Assento Sanitário (Tampa do Vaso)", category: "Banheiro", notes: "Conferir se a casa já tem", bought: false },
-      { name: "Cesto de Roupa Suja", category: "Banheiro", notes: "Banheiro ou Lavanderia", bought: false },
+      { name: "Escova Sanitária com Suporte", category: "Banheiro", notes: "Limpeza do vaso", bought: false },
+      { name: "Porta-sabonete Líquido e Porta-escovas de Dente", category: "Banheiro", notes: "Bancada da pia", bought: false },
+      { name: "Porta-algodão e Cotonetes", category: "Banheiro", notes: "Bancada", bought: false },
+      { name: "Suporte Porta-shampoo para Dentro do Box", category: "Banheiro", notes: "Parede ou canto", bought: false },
+      { name: "Papeleira (Suporte de Papel Higiênico)", category: "Banheiro", notes: "Parede ou chão", bought: false },
+      { name: "Ganchos / Porta-toalhas de Parede", category: "Banheiro", notes: "Pendurar toalhas", bought: false },
+      { name: "Espelho para Acima da Pia", category: "Banheiro", notes: "Essencial", bought: false },
+      { name: "Gabinete / Armário de Banheiro", category: "Banheiro", notes: "Guardar produtos", bought: false },
+      { name: "Assento Sanitário (Tampa do Vaso)", category: "Banheiro", notes: "Conferir modelo do vaso", bought: false },
+      { name: "Rodo Pequeno para Box", category: "Banheiro", notes: "Manter vidro limpo", bought: false },
+      { name: "Secador de Cabelo", category: "Banheiro", notes: "Cuidados pessoais", bought: false },
+      { name: "Difusor de Aromas / Cheirinho para Banheiro", category: "Banheiro", notes: "Ambiente perfumado", bought: false },
 
-      // LAVANDERIA E LIMPEZA
-      { name: "Máquina de Lavar Roupas", category: "Lavanderia", notes: "Eletrodoméstico essencial", bought: false },
-      { name: "Varal de Chão (Abas) ou Varal de Teto", category: "Lavanderia", notes: "Secar roupas", bought: false },
-      { name: "Kit Pregadores de Roupa (2 pacotes)", category: "Lavanderia", notes: "Plástico resistente ou inox", bought: false },
-      { name: "Ferro de Passar ou Vaporizador (Steamer)", category: "Lavanderia", notes: "Passar roupas", bought: false },
-      { name: "Tábua de Passar Roupa", category: "Lavanderia", notes: "Opcional", bought: false },
-      { name: "Aspirador de Pó Vertical ou Robô", category: "Lavanderia", notes: "Praticidade", bought: false },
-      { name: "Vassoura Macia, Vassoura de Pelo e Rodo Duplo", category: "Lavanderia", notes: "Limpeza diária", bought: false },
-      { name: "Pá de Lixo com Cabo Longo", category: "Lavanderia", notes: "Limpeza", bought: false },
-      { name: "Mop Giratório com Balde ou Mop Spray", category: "Lavanderia", notes: "Salva-vidas na limpeza", bought: false },
-      { name: "Baldes (2 unidades) e Bacias (2 unidades)", category: "Lavanderia", notes: "Limpeza e roupas", bought: false },
-      { name: "Panos de Chão (4 un) e Panos de Microfibra (6 un)", category: "Lavanderia", notes: "Tirar pó e passar pano", bought: false },
-      { name: "Escova de Lavar Roupa/Tênis e Luvas de Borracha", category: "Lavanderia", notes: "Limpeza pesada", bought: false },
+      // ================= LAVANDERIA (18 ITENS) =================
+      { name: "Máquina de Lavar Roupas", category: "Lavanderia", notes: "11kg a 15kg", bought: false },
+      { name: "Cesto de Roupas Sujas", category: "Lavanderia", notes: "Bambu, tecido ou plástico", bought: false },
+      { name: "Cesto para Roupas Limpas (Recolher do varal)", category: "Lavanderia", notes: "Plástico flexível", bought: false },
+      { name: "Varal de Chão com Abas", category: "Lavanderia", notes: "Prático para qualquer espaço", bought: false },
+      { name: "Varal de Teto ou Parede Retrátil", category: "Lavanderia", notes: "Economizar espaço", bought: false },
+      { name: "Mini Varal com Pregadores (Para meias e roupas íntimas)", category: "Lavanderia", notes: "Super útil", bought: false },
+      { name: "Pregadores de Roupa (3 pacotes)", category: "Lavanderia", notes: "Plástico resistente ou inox", bought: false },
+      { name: "Sacos Protetores para Lavar Roupas Delicadas (Kit)", category: "Lavanderia", notes: "Máquina de lavar", bought: false },
+      { name: "Ferro de Passar Roupa ou Vaporizador (Steamer)", category: "Lavanderia", notes: "Passar roupas", bought: false },
+      { name: "Tábua de Passar Roupa", category: "Lavanderia", notes: "Dobrável", bought: false },
+      { name: "Aspirador de Pó Vertical ou Robô Aspirador", category: "Lavanderia", notes: "Limpeza rápida", bought: false },
+      { name: "Mop Giratório com Balde ou Mop Spray", category: "Lavanderia", notes: "Passar pano sem esforço", bought: false },
+      { name: "Vassoura de Cerdas Macias (Interna) + Vassoura Dura (Quintal)", category: "Lavanderia", notes: "2 unidades", bought: false },
+      { name: "Rodo Duplo de Chão", category: "Lavanderia", notes: "Secar pisos", bought: false },
+      { name: "Pá de Lixo com Cabo Longo", category: "Lavanderia", notes: "Não precisar abaixar", bought: false },
+      { name: "Baldes (2 un) e Bacias Plásticas (2 un)", category: "Lavanderia", notes: "Limpeza e molho", bought: false },
+      { name: "Panos de Chão (5 un) e Panos de Microfibra (8 un)", category: "Lavanderia", notes: "Piso, móveis e vidros", bought: false },
+      { name: "Escova de Limpeza + Luvas de Borracha", category: "Lavanderia", notes: "Limpeza pesada", bought: false },
 
-      // OUTROS / UTILIDADES DE CASA VAZIA
-      { name: "Lâmpadas LED para todos os cômodos (8 a 12 un)", category: "Outros", notes: "Casa vazia costuma vir sem lâmpadas!", bought: false },
-      { name: "Escada Doméstica (4 ou 5 degraus)", category: "Outros", notes: "Trocar lâmpada, instalar cortina, limpar alto", bought: false },
-      { name: "Maleta de Ferramentas Básica (Chave Philips/Fenda, Martelo, Alicate, Trena)", category: "Outros", notes: "Montar móveis e reparos", bought: false },
-      { name: "Furadeira / Parafusadeira + Buchas e Parafusos", category: "Outros", notes: "Instalar cortinas, quadros e painéis", bought: false },
-      { name: "Filtros de Linha (Réguas de Tomada - 2 ou 3 un) e Extensão", category: "Outros", notes: "Para TV, PC e eletros", bought: false },
-      { name: "Adaptadores de Tomada (10A para 20A)", category: "Outros", notes: "Essencial para Airfryer e Micro-ondas!", bought: false },
-      { name: "Roteador Wi-Fi / Internet Instalada", category: "Outros", notes: "Conectividade", bought: false },
+      // ================= CASA & OUTROS (18 ITENS) =================
+      { name: "Lâmpadas LED para toda a casa (10 a 15 un)", category: "Outros", notes: "Branca p/ cozinha/banheiro, Amarela p/ quarto/sala", bought: false },
+      { name: "Escada Doméstica Dobrável (4 ou 5 degraus)", category: "Outros", notes: "Instalar lâmpadas, cortinas e limpar", bought: false },
+      { name: "Furadeira / Parafusadeira + Kit Brocas, Buchas e Parafusos", category: "Outros", notes: "Montar móveis e instalar suportes", bought: false },
+      { name: "Maleta de Ferramentas (Martelo, Chaves Fenda/Philips, Alicate, Trena, Estilete)", category: "Outros", notes: "Essencial na mudança", bought: false },
+      { name: "Fita Isolante, Fita Dupla Face 3M e SuperBonder", category: "Outros", notes: "Pequenos reparos", bought: false },
+      { name: "Filtros de Linha / Réguas de Tomada (3 un)", category: "Outros", notes: "Para TV, PC e bancada", bought: false },
+      { name: "Adaptadores de Tomada 10A para 20A (3 un)", category: "Outros", notes: "Airfryer, Micro-ondas e Secador usam pino grosso!", bought: false },
+      { name: "Extensão Elétrica (5 ou 10 metros)", category: "Outros", notes: "Aspirador / Quintal", bought: false },
+      { name: "Pilhas AA e AAA (Palito) para Controles", category: "Outros", notes: "TV, Ar-condicionado", bought: false },
+      { name: "Internet Fibra + Roteador Wi-Fi Instalado", category: "Outros", notes: "Agendar antes da mudança", bought: false },
       { name: "Mesa de Escritório + Cadeira Ergonômica", category: "Outros", notes: "Home Office / Estudos", bought: false },
-      { name: "Kit Primeiros Socorros + Termômetro", category: "Outros", notes: "Farmacinha de casa", bought: false },
-      { name: "Cadeados ou Fechadura Nova", category: "Outros", notes: "Segurança na mudança", bought: false },
-      { name: "Primeira Compra de Mercado (Produtos de Limpeza e Higiene)", category: "Outros", notes: "Papel higiênico, detergente, sabão, esponja, sacos de lixo", bought: false },
-      { name: "Churrasqueira Portátil + Kit Churrasco (Faca, Garfo, Tábua)", category: "Outros", notes: "Lazer do casal", bought: false }
+      { name: "Caixinha de Primeiros Socorros + Remédios Básicos + Termômetro", category: "Outros", notes: "Farmacinha de casa", bought: false },
+      { name: "Costura Básica (Agulhas, Linhas, Botões e Tesoura)", category: "Outros", notes: "Emergências", bought: false },
+      { name: "Guarda-chuvas (2 unidades)", category: "Outros", notes: "Deixar perto da porta", bought: false },
+      { name: "Mangueira de Jardim com Esguicho", category: "Outros", notes: "Lavar quintal/garagem e carro", bought: false },
+      { name: "Churrasqueira + Kit Churrasco (Faca, Garfo, Pegador, Tábua)", category: "Outros", notes: "Lazer de fim de semana", bought: false },
+      { name: "Caixa Térmica / Cooler", category: "Outros", notes: "Bebidas e viagens", bought: false },
+      { name: "1ª Compra de Limpeza (Detergente, Esponja, Sabão, Amaciante, Desinfetante, Saco de Lixo, Papel Higiênico)", category: "Outros", notes: "Para limpar a casa antes de entrar!", bought: false }
     ];
 
+    // Converte a lista num objeto único para salvar de uma vez sem duplicar
+    function getInitialDataObject() {
+      const obj = {};
+      fullHouseItems.forEach((item, index) => {
+        const key = 'item_' + String(index + 1).padStart(3, '0');
+        obj[key] = item;
+      });
+      return obj;
+    }
+
     onValue(itemsRef, (snapshot) => {
+      if (isResetting) return;
+
       const statusEl = document.getElementById('status-sync');
       statusEl.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-500"></i> Sincronizado';
       
       const data = snapshot.val();
       if (!data) {
-        fullHouseItems.forEach(item => push(itemsRef, item));
+        isResetting = true;
+        set(itemsRef, getInitialDataObject()).then(() => {
+          isResetting = false;
+        });
         return;
       }
       allItems = data;
+      updateCategoryCounts();
       renderItems();
     }, (error) => {
       document.getElementById('status-sync').innerHTML = '<span class="text-red-500">Erro de permissão</span>';
       console.error(error);
     });
+
+    function updateCategoryCounts() {
+      const entries = Object.values(allItems || {});
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        const cat = btn.getAttribute('data-cat');
+        const style = categoryStyles[cat];
+        if (cat === 'Todos') {
+          btn.innerHTML = `✨ Todos (${entries.length})`;
+        } else {
+          const count = entries.filter(i => i.category === cat).length;
+          const label = cat === 'Outros' ? 'Casa & Outros' : cat;
+          btn.innerHTML = `${style ? style.icon : ''} ${label} (${count})`;
+        }
+      });
+    }
 
     window.renderItems = function() {
       const listEl = document.getElementById('items-list');
@@ -292,8 +443,13 @@
       
       const total = entries.length;
       const boughtCount = entries.filter(([_, item]) => item.bought).length;
+      const pendingCount = total - boughtCount;
       const pct = total > 0 ? Math.round((boughtCount / total) * 100) : 0;
-      document.getElementById('progress-text').innerText = `${pct}% (${boughtCount}/${total})`;
+
+      document.getElementById('stat-total').innerText = total;
+      document.getElementById('stat-bought').innerText = boughtCount;
+      document.getElementById('stat-pending').innerText = pendingCount;
+      document.getElementById('progress-text').innerText = `${pct}% concluído`;
       document.getElementById('progress-bar').style.width = `${pct}%`;
 
       const filtered = entries.filter(([id, item]) => {
@@ -306,38 +462,43 @@
       filtered.sort((a, b) => Number(a[1].bought) - Number(b[1].bought));
 
       if (filtered.length === 0) {
-        listEl.innerHTML = `<div class="text-center py-12 text-slate-400 text-sm bg-white rounded-2xl border border-slate-100">Nenhum item encontrado neste filtro.</div>`;
+        listEl.innerHTML = `
+          <div class="text-center py-12 text-stone-400 text-sm bg-white rounded-2xl border border-stone-200/80 shadow-sm">
+            <i class="fa-solid fa-box-open text-2xl mb-2 text-stone-300 block"></i>
+            Nenhum item encontrado neste filtro.
+          </div>`;
         return;
       }
 
       filtered.forEach(([id, item]) => {
+        const style = categoryStyles[item.category] || categoryStyles["Outros"];
         const card = document.createElement('div');
-        card.className = `flex items-center justify-between p-3.5 rounded-2xl border transition shadow-sm ${
+        card.className = `flex items-center justify-between p-3.5 rounded-2xl border transition duration-200 shadow-sm ${
           item.bought 
-            ? 'bg-slate-50 border-slate-200/60 opacity-65' 
-            : 'bg-white border-slate-200/90 hover:border-emerald-300'
+            ? 'bg-emerald-50/30 border-emerald-200/60 opacity-70' 
+            : 'bg-white border-stone-200/90 hover:border-emerald-400 hover:shadow-md'
         }`;
 
         card.innerHTML = `
           <div class="flex items-center gap-3.5 flex-1 cursor-pointer" onclick="toggleItem('${id}', ${!item.bought})">
-            <div class="w-6 h-6 rounded-lg flex items-center justify-center border-2 transition shrink-0 ${
-              item.bought ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 bg-slate-50'
+            <div class="w-6 h-6 rounded-xl flex items-center justify-center border-2 transition shrink-0 ${
+              item.bought ? 'bg-emerald-500 border-emerald-500 text-white shadow-sm shadow-emerald-500/30' : 'border-stone-300 bg-stone-50/80'
             }">
               ${item.bought ? '<i class="fa-solid fa-check text-xs font-bold"></i>' : ''}
             </div>
             <div class="pr-2">
-              <p class="text-sm font-semibold ${item.bought ? 'line-through text-slate-400' : 'text-slate-800'}">${item.name}</p>
+              <p class="text-sm font-semibold leading-snug ${item.bought ? 'line-through text-stone-400' : 'text-slate-800'}">${item.name}</p>
               <div class="flex flex-wrap items-center gap-1.5 mt-1">
-                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">${item.category}</span>
-                ${item.notes ? `<span class="text-xs text-slate-500">• ${item.notes}</span>` : ''}
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md border ${style.badge}">${style.icon} ${item.category}</span>
+                ${item.notes ? `<span class="text-xs text-stone-500">• ${item.notes}</span>` : ''}
               </div>
             </div>
           </div>
           <div class="flex items-center gap-1 shrink-0">
-            <button onclick="openEditModal('${id}')" class="text-slate-400 hover:text-slate-700 p-2 text-xs transition" title="Editar">
+            <button onclick="openEditModal('${id}')" class="text-stone-400 hover:text-emerald-600 p-2 text-xs transition" title="Editar">
               <i class="fa-solid fa-pen"></i>
             </button>
-            <button onclick="deleteItem('${id}')" class="text-slate-400 hover:text-red-500 p-2 text-xs transition" title="Excluir">
+            <button onclick="deleteItem('${id}')" class="text-stone-400 hover:text-rose-500 p-2 text-xs transition" title="Excluir">
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
@@ -383,9 +544,10 @@
     };
 
     window.loadFullList = function() {
-      if (confirm('Isso vai substituir a lista atual pelos 100 itens completos de casa nova. Confirmar?')) {
-        set(itemsRef, null).then(() => {
-          fullHouseItems.forEach(item => push(itemsRef, item));
+      if (confirm('Isso vai limpar os itens duplicados e carregar exatamente os 165 itens da casa nova. Confirmar?')) {
+        isResetting = true;
+        set(itemsRef, getInitialDataObject()).then(() => {
+          isResetting = false;
         });
       }
     };
@@ -393,10 +555,10 @@
     window.setCategory = function(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
-        if (btn.innerText.includes(cat)) {
+        if (btn.getAttribute('data-cat') === cat) {
           btn.className = "cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition";
         } else {
-          btn.className = "cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition";
+          btn.className = "cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition";
         }
       });
       renderItems();
