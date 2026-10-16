@@ -3,16 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Enxoval Isabela & Ramon 🤍</title>
+  <title>Enxoval Isabela & Ramon 🩵</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aqua: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
     body { 
-      background-color: #faf9f6; 
-      background-image: radial-gradient(#e5e7eb 0.8px, transparent 0.8px);
-      background-size: 20px 20px;
-      color: #1e293b; 
+      background-color: #f2fbf9; 
+      background-image: radial-gradient(#99f6e4 0.9px, transparent 0.9px);
+      background-size: 22px 22px;
+      color: #134e4a; 
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
     }
     .font-serif-title {
@@ -24,86 +46,100 @@
 </head>
 <body class="min-h-screen pb-28">
 
-  <!-- Cabeçalho Decorado -->
-  <header class="bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-sm sticky top-0 z-20">
-    <!-- Faixa decorativa superior -->
-    <div class="h-1.5 w-full bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-400"></div>
+  <!-- Cabeçalho Verde-Água Estilizado -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-aqua-200/80 shadow-sm sticky top-0 z-20">
+    <!-- Faixa Superior Tiffany / Verde-Água -->
+    <div class="h-2 w-full bg-gradient-to-r from-aqua-400 via-cyan-400 to-aqua-600"></div>
 
-    <div class="max-w-2xl mx-auto px-4 pt-4 pb-3">
+    <div class="max-w-2xl mx-auto px-4 pt-3.5 pb-3">
       
-      <!-- Topo: Monograma + Nomes + Status -->
-      <div class="flex justify-between items-center mb-4">
-        <div class="flex items-center gap-3.5">
-          <!-- Monograma do Casal -->
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50 border border-emerald-200/70 flex flex-col items-center justify-center shadow-sm shrink-0">
-            <span class="font-serif-title text-lg font-bold text-emerald-800 leading-none">I<span class="text-amber-500 font-normal">&amp;</span>R</span>
-            <i class="fa-solid fa-heart text-[8px] text-rose-400 mt-1"></i>
+      <!-- Topo: Brasão Casal + Status + Engrenagem Oculta -->
+      <div class="flex justify-between items-center mb-3.5">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-aqua-100 via-white to-cyan-100 border border-aqua-300 flex flex-col items-center justify-center shadow-sm shrink-0">
+            <span class="font-serif-title text-lg font-bold text-aqua-800 leading-none">I<span class="text-aqua-500 font-normal">&amp;</span>R</span>
+            <i class="fa-solid fa-heart text-[8px] text-aqua-500 mt-1"></i>
           </div>
           <div>
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">Nosso Lar</span>
-              <span class="text-xs text-amber-500">✨</span>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-aqua-700 bg-aqua-100/80 border border-aqua-200 px-2.5 py-0.5 rounded-full">Nosso Enxoval</span>
             </div>
-            <h1 class="text-3xl font-bold text-slate-900 font-serif-title tracking-wide leading-tight mt-0.5">
-              Isabela <span class="text-emerald-600 italic font-normal">&amp;</span> Ramon
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 font-serif-title tracking-wide leading-tight mt-0.5">
+              Isabela <span class="text-aqua-500 italic font-normal">&amp;</span> Ramon
             </h1>
           </div>
         </div>
 
-        <span id="status-sync" class="text-[11px] px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-stone-500 font-medium flex items-center gap-1.5 shadow-inner">
-          <i class="fa-solid fa-spinner fa-spin text-stone-400"></i> Conectando
-        </span>
-      </div>
-
-      <!-- Painel de Progresso Decorado -->
-      <div class="bg-gradient-to-br from-white via-stone-50/50 to-emerald-50/40 p-4 rounded-2xl border border-stone-200/90 shadow-sm">
-        <div class="grid grid-cols-3 gap-2 mb-3 text-center">
-          <div class="bg-white p-2 rounded-xl border border-stone-100 shadow-sm">
-            <span class="block text-[10px] uppercase tracking-wider text-stone-400 font-semibold">Total</span>
-            <span id="stat-total" class="text-base font-bold text-slate-800">0</span>
-          </div>
-          <div class="bg-emerald-50/70 p-2 rounded-xl border border-emerald-100 shadow-sm">
-            <span class="block text-[10px] uppercase tracking-wider text-emerald-700 font-semibold">Já Temos</span>
-            <span id="stat-bought" class="text-base font-bold text-emerald-600">0</span>
-          </div>
-          <div class="bg-amber-50/70 p-2 rounded-xl border border-amber-100 shadow-sm">
-            <span class="block text-[10px] uppercase tracking-wider text-amber-700 font-semibold">Faltam</span>
-            <span id="stat-pending" class="text-base font-bold text-amber-600">0</span>
-          </div>
-        </div>
-
-        <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
-          <span class="text-stone-600 flex items-center gap-1.5">
-            <i class="fa-solid fa-house-chimney-heart text-emerald-600"></i> Evolução do Enxoval
+        <div class="flex items-center gap-2">
+          <span id="status-sync" class="text-[11px] px-2.5 py-1 rounded-full bg-aqua-50 border border-aqua-200 text-aqua-700 font-medium flex items-center gap-1.5">
+            <i class="fa-solid fa-spinner fa-spin text-aqua-500"></i> Conectando
           </span>
-          <span id="progress-text" class="text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full font-bold">0%</span>
-        </div>
-        <div class="w-full bg-stone-200/80 rounded-full h-2.5 overflow-hidden p-0.5">
-          <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+          <button onclick="openSettingsModal()" class="w-8 h-8 rounded-full bg-aqua-50 hover:bg-aqua-100 border border-aqua-200 text-aqua-700 flex items-center justify-center text-xs transition" title="Configurações Avançadas">
+            <i class="fa-solid fa-gear"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Abas de Cômodos com Contador -->
-      <div id="category-tabs" class="flex gap-2 overflow-x-auto no-scrollbar mt-3.5 pt-0.5">
-        <button onclick="setCategory('Todos')" data-cat="Todos" class="cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition">✨ Todos</button>
-        <button onclick="setCategory('Cozinha')" data-cat="Cozinha" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🍳 Cozinha</button>
-        <button onclick="setCategory('Sala')" data-cat="Sala" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛋️ Sala</button>
-        <button onclick="setCategory('Quarto')" data-cat="Quarto" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛏️ Quarto</button>
-        <button onclick="setCategory('Banheiro')" data-cat="Banheiro" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🚿 Banheiro</button>
-        <button onclick="setCategory('Lavanderia')" data-cat="Lavanderia" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🧺 Lavanderia</button>
-        <button onclick="setCategory('Outros')" data-cat="Outros" class="cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition">🛠️ Casa &amp; Outros</button>
+      <!-- Painel Duplo: Progresso de Itens + Orçamento Financeiro -->
+      <div class="bg-gradient-to-br from-aqua-50/90 via-white to-cyan-50/60 p-3.5 rounded-2xl border border-aqua-200/90 shadow-sm space-y-3">
+        
+        <!-- Linha 1: Contadores de Itens + Barra -->
+        <div>
+          <div class="flex justify-between items-center text-xs font-semibold mb-1.5">
+            <span class="text-aqua-900 flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles text-aqua-500"></i> Progresso (<span id="stat-bought" class="text-aqua-600 font-bold">0</span> de <span id="stat-total">0</span> itens • faltam <span id="stat-pending" class="text-amber-600">0</span>)
+            </span>
+            <span id="progress-text" class="text-aqua-800 bg-aqua-100 border border-aqua-200 px-2.5 py-0.5 rounded-full font-bold text-[11px]">0%</span>
+          </div>
+          <div class="w-full bg-aqua-100/80 rounded-full h-2.5 overflow-hidden p-0.5 border border-aqua-200/60">
+            <div id="progress-bar" class="bg-gradient-to-r from-aqua-400 via-aqua-500 to-cyan-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Linha 2: Resumo Financeiro -->
+        <div class="grid grid-cols-3 gap-2 pt-2 border-t border-aqua-100 text-center">
+          <div class="bg-white/90 py-1.5 px-2 rounded-xl border border-aqua-100">
+            <span class="block text-[9px] uppercase tracking-wider text-slate-400 font-bold">Orçamento Total</span>
+            <span id="fin-total" class="text-xs sm:text-sm font-bold text-slate-700">R$ 0,00</span>
+          </div>
+          <div class="bg-aqua-500/10 py-1.5 px-2 rounded-xl border border-aqua-200/80">
+            <span class="block text-[9px] uppercase tracking-wider text-aqua-700 font-bold">Já Investido</span>
+            <span id="fin-spent" class="text-xs sm:text-sm font-bold text-aqua-700">R$ 0,00</span>
+          </div>
+          <div class="bg-amber-50/80 py-1.5 px-2 rounded-xl border border-amber-200/60">
+            <span class="block text-[9px] uppercase tracking-wider text-amber-700 font-bold">Falta Investir</span>
+            <span id="fin-pending" class="text-xs sm:text-sm font-bold text-amber-700">R$ 0,00</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Busca e Filtro -->
-      <div class="flex gap-2 mt-3">
-        <div class="relative flex-1">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
-          <input type="text" id="search-input" oninput="renderItems()" placeholder="Buscar item no enxoval..." class="w-full bg-stone-100/90 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:bg-white focus:border-emerald-500 transition">
+      <!-- Abas de Cômodos -->
+      <div id="category-tabs" class="flex gap-1.5 overflow-x-auto no-scrollbar mt-3 pt-0.5">
+        <button onclick="setCategory('Todos')" data-cat="Todos" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-aqua-600 text-white shadow-sm shadow-aqua-600/20 transition">✨ Todos</button>
+        <button onclick="setCategory('Cozinha')" data-cat="Cozinha" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🍳 Cozinha</button>
+        <button onclick="setCategory('Sala')" data-cat="Sala" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🛋️ Sala</button>
+        <button onclick="setCategory('Quarto')" data-cat="Quarto" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🛏️ Quarto</button>
+        <button onclick="setCategory('Banheiro')" data-cat="Banheiro" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🚿 Banheiro</button>
+        <button onclick="setCategory('Lavanderia')" data-cat="Lavanderia" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🧺 Lavanderia</button>
+        <button onclick="setCategory('Outros')" data-cat="Outros" class="cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition">🛠️ Casa &amp; Outros</button>
+      </div>
+
+      <!-- Busca + Filtro de Status + Filtro de Prioridade -->
+      <div class="grid grid-cols-12 gap-2 mt-2.5">
+        <div class="relative col-span-6 sm:col-span-6">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-aqua-500 text-xs"></i>
+          <input type="text" id="search-input" oninput="renderItems()" placeholder="Buscar item..." class="w-full bg-aqua-50/70 border border-aqua-200 rounded-xl pl-8 pr-2.5 py-1.5 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-aqua-500 transition">
         </div>
-        <select id="filter-status" onchange="renderItems()" class="bg-stone-100/90 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:bg-white focus:border-emerald-500">
-          <option value="all">Todos</option>
-          <option value="pending">Falta comprar</option>
-          <option value="bought">Já temos</option>
+        <select id="filter-status" onchange="renderItems()" class="col-span-3 sm:col-span-3 bg-aqua-50/70 border border-aqua-200 rounded-xl px-2 py-1.5 text-[11px] sm:text-xs font-semibold text-aqua-900 focus:outline-none focus:bg-white focus:border-aqua-500">
+          <option value="all">📋 Todos</option>
+          <option value="pending">🛒 Falta</option>
+          <option value="bought">✅ Temos</option>
+        </select>
+        <select id="filter-priority" onchange="renderItems()" class="col-span-3 sm:col-span-3 bg-aqua-50/70 border border-aqua-200 rounded-xl px-2 py-1.5 text-[11px] sm:text-xs font-semibold text-aqua-900 focus:outline-none focus:bg-white focus:border-aqua-500">
+          <option value="all">⚡ Prioridade</option>
+          <option value="alta">🔥 Dia 1 (Urgente)</option>
+          <option value="media">⭐ Importante</option>
+          <option value="baixa">🌿 Depois</option>
         </select>
       </div>
     </div>
@@ -113,54 +149,88 @@
   <main class="max-w-2xl mx-auto p-4">
     <div id="items-list" class="space-y-2.5"></div>
 
-    <!-- Rodapé Decorado + Botão de Resetar sem Duplicar -->
-    <div class="mt-14 pt-8 pb-4 border-t border-stone-200/80 text-center">
-      <div class="inline-flex items-center gap-2 text-stone-400 text-xs font-serif-title italic text-base mb-3">
-        <span>✦</span> Construindo o nosso lar <span>✦</span>
+    <!-- Rodapé Discreto e Romântico -->
+    <div class="mt-14 pt-6 pb-4 border-t border-aqua-200/60 text-center">
+      <div class="inline-flex items-center gap-2 text-aqua-700 font-serif-title italic text-lg">
+        <span>✦</span> Construindo o nosso lar • Isabela &amp; Ramon <span>✦</span>
       </div>
-      <p class="text-xs text-stone-400 mb-3">Se a lista estiver duplicada ou quiser recarregar os 165 itens originais:</p>
-      <button onclick="loadFullList()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-white border border-stone-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800 shadow-sm transition">
-        <i class="fa-solid fa-rotate text-emerald-600"></i> Limpar Duplicados e Carregar 165 Itens
-      </button>
     </div>
   </main>
 
-  <!-- Botão Flutuante (+) -->
+  <!-- Botão Flutuante (+) Verde-Água -->
   <div class="fixed bottom-6 right-6 z-30">
-    <button onclick="openModal()" class="bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold w-14 h-14 rounded-2xl shadow-xl shadow-emerald-600/30 flex items-center justify-center text-xl transition transform active:scale-95">
+    <button onclick="openModal()" class="bg-gradient-to-tr from-aqua-600 to-cyan-500 hover:from-aqua-500 hover:to-cyan-400 text-white font-bold w-14 h-14 rounded-2xl shadow-xl shadow-aqua-600/30 flex items-center justify-center text-xl transition transform active:scale-95">
       <i class="fa-solid fa-plus"></i>
     </button>
   </div>
 
   <!-- Modal Adicionar / Editar Item -->
   <div id="modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden flex items-center justify-center p-4">
-    <div class="bg-white border border-stone-100 rounded-3xl w-full max-w-sm p-6 shadow-2xl">
-      <h2 id="modal-title" class="text-xl font-bold text-slate-900 font-serif-title mb-4">Novo Item do Enxoval</h2>
+    <div class="bg-white border border-aqua-200 rounded-3xl w-full max-w-sm p-6 shadow-2xl">
+      <h2 id="modal-title" class="text-xl font-bold text-slate-800 font-serif-title mb-4">Novo Item do Enxoval</h2>
       <input type="hidden" id="edit-id">
-      <div class="space-y-3.5">
+      <div class="space-y-3">
         <div>
-          <label class="text-xs font-semibold text-stone-500 block mb-1">Nome do Item</label>
-          <input type="text" id="new-name" placeholder="Ex: Jogo de Panelas, Cortina..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
+          <label class="text-xs font-semibold text-slate-500 block mb-1">Nome do Item</label>
+          <input type="text" id="new-name" placeholder="Ex: Jogo de Panelas, Cortina..." class="w-full bg-aqua-50/50 border border-aqua-200 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-aqua-500">
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-xs font-semibold text-slate-500 block mb-1">Cômodo</label>
+            <select id="new-category" class="w-full bg-aqua-50/50 border border-aqua-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-aqua-500">
+              <option value="Cozinha">🍳 Cozinha</option>
+              <option value="Sala">🛋️ Sala</option>
+              <option value="Quarto">🛏️ Quarto</option>
+              <option value="Banheiro">🚿 Banheiro</option>
+              <option value="Lavanderia">🧺 Lavanderia</option>
+              <option value="Outros">🛠️ Outros</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-500 block mb-1">Prioridade</label>
+            <select id="new-priority" class="w-full bg-aqua-50/50 border border-aqua-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-aqua-500">
+              <option value="alta">🔥 Dia 1 (Urgente)</option>
+              <option value="media">⭐ Importante</option>
+              <option value="baixa">🌿 Depois</option>
+            </select>
+          </div>
         </div>
         <div>
-          <label class="text-xs font-semibold text-stone-500 block mb-1">Cômodo</label>
-          <select id="new-category" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
-            <option value="Cozinha">🍳 Cozinha</option>
-            <option value="Sala">🛋️ Sala</option>
-            <option value="Quarto">🛏️ Quarto</option>
-            <option value="Banheiro">🚿 Banheiro</option>
-            <option value="Lavanderia">🧺 Lavanderia</option>
-            <option value="Outros">🛠️ Casa &amp; Outros</option>
-          </select>
+          <label class="text-xs font-semibold text-slate-500 block mb-1">Valor Estimado / Pago (R$)</label>
+          <input type="number" step="0.01" id="new-price" placeholder="Ex: 250.00 (deixe vazio se não souber)" class="w-full bg-aqua-50/50 border border-aqua-200 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-aqua-500">
         </div>
         <div>
-          <label class="text-xs font-semibold text-stone-500 block mb-1">Observação / Marca / Preço (Opcional)</label>
-          <input type="text" id="new-notes" placeholder="Ex: Inox, Cor preta, R$ 350..." class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-emerald-500">
+          <label class="text-xs font-semibold text-slate-500 block mb-1">Observação / Marca / Loja (Opcional)</label>
+          <input type="text" id="new-notes" placeholder="Ex: Inox, Cor preta, Link..." class="w-full bg-aqua-50/50 border border-aqua-200 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-aqua-500">
         </div>
       </div>
       <div class="flex gap-2.5 mt-6">
-        <button onclick="closeModal()" class="w-1/2 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-sm font-semibold transition">Cancelar</button>
-        <button onclick="saveItem()" class="w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-md shadow-emerald-600/20 transition">Salvar</button>
+        <button onclick="closeModal()" class="w-1/2 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-semibold transition">Cancelar</button>
+        <button onclick="saveItem()" class="w-1/2 py-2.5 rounded-xl bg-aqua-600 hover:bg-aqua-500 text-white text-sm font-bold shadow-md shadow-aqua-600/20 transition">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Oculto de Configurações (Reset Protegido) -->
+  <div id="settings-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-aqua-200 rounded-3xl w-full max-w-sm p-6 shadow-2xl">
+      <div class="flex justify-between items-center mb-3">
+        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-gear text-aqua-600"></i> Configurações
+        </h2>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="text-xs text-slate-500 mb-4">
+        Dica: Você pode clicar direto na etiqueta de <b>Prioridade</b> de qualquer item para alternar entre <i>Dia 1, Importante ou Depois</i>, ou clicar no <b>Preço (R$)</b> para digitar o valor rapidamente!
+      </p>
+      <div class="p-3.5 rounded-2xl bg-rose-50 border border-rose-200">
+        <p class="text-xs font-bold text-rose-800 mb-1">Zona de Perigo (Resetar Lista)</p>
+        <p class="text-[11px] text-rose-600 mb-3">Restaura os 170 itens de fábrica e apaga os itens marcados. Exige confirmação.</p>
+        <button onclick="loadFullList()" class="w-full py-2 rounded-xl text-xs font-bold bg-white border border-rose-300 text-rose-700 hover:bg-rose-600 hover:text-white transition">
+          <i class="fa-solid fa-rotate"></i> Resetar Lista de Fábrica
+        </button>
       </div>
     </div>
   </div>
@@ -182,20 +252,51 @@
     let currentCategory = 'Todos';
     let isResetting = false;
 
-    // Cores e ícones decorativos por categoria
     const categoryStyles = {
-      "Cozinha": { badge: "bg-amber-50 text-amber-700 border-amber-200/80", icon: "🍳" },
-      "Sala": { badge: "bg-indigo-50 text-indigo-700 border-indigo-200/80", icon: "🛋️" },
-      "Quarto": { badge: "bg-rose-50 text-rose-700 border-rose-200/80", icon: "🛏️" },
-      "Banheiro": { badge: "bg-cyan-50 text-cyan-700 border-cyan-200/80", icon: "🚿" },
-      "Lavanderia": { badge: "bg-teal-50 text-teal-700 border-teal-200/80", icon: "🧺" },
-      "Outros": { badge: "bg-stone-100 text-stone-700 border-stone-200/80", icon: "🛠️" }
+      "Cozinha": { badge: "bg-aqua-50 text-aqua-800 border-aqua-200", icon: "🍳" },
+      "Sala": { badge: "bg-cyan-50 text-cyan-800 border-cyan-200", icon: "🛋️" },
+      "Quarto": { badge: "bg-teal-50 text-teal-800 border-teal-200", icon: "🛏️" },
+      "Banheiro": { badge: "bg-sky-50 text-sky-800 border-sky-200", icon: "🚿" },
+      "Lavanderia": { badge: "bg-emerald-50 text-emerald-800 border-emerald-200", icon: "🧺" },
+      "Outros": { badge: "bg-slate-100 text-slate-700 border-slate-200", icon: "🛠️" }
     };
 
-    // 165 Itens Individuais para Casa Totalmente Vazia
+    const priorityStyles = {
+      "alta": { label: "🔥 Dia 1", classes: "bg-rose-50 text-rose-700 border-rose-200" },
+      "media": { label: "⭐ Importante", classes: "bg-amber-50 text-amber-700 border-amber-200" },
+      "baixa": { label: "🌿 Depois", classes: "bg-aqua-50 text-aqua-700 border-aqua-200" }
+    };
+
+    // Inteligência para classificar automaticamente itens essenciais de 1º dia de mudança
+    function guessPriority(name) {
+      const n = name.toLowerCase();
+      const essentialKeywords = [
+        "geladeira", "fogão", "botijão", "mangueira e regulador", "purificador", "filtro",
+        "jogo de panelas", "panela de pressão", "frigideira", "faqueiro", "aparelho de jantar",
+        "copos", "tábua de corte", "kit facas", "escorredor de louça", "panos de prato",
+        "lixeira", "cama box", "colchão", "travesseiros", "lençol", "edredom", "cobertor",
+        "cortina com blackout", "chuveiro", "veda rosca", "toalhas de banho", "escova sanitária",
+        "assento sanitário", "máquina de lavar", "varal", "vassoura", "rodo", "baldes",
+        "panos de chão", "lâmpadas", "adaptadores de tomada", "filtros de linha", "internet",
+        "1ª compra de limpeza"
+      ];
+      const lowKeywords = [
+        "taças", "batedeira", "cuscuzeira", "forma de pizza", "colher de sorvete", "rolo de abrir",
+        "aparador", "quadros", "vasos", "luminária", "manta", "mesa de centro", "cabeceira",
+        "abajur", "sapateira", "tv para o quarto", "roupões", "difusor", "tábua de passar",
+        "churrasqueira", "cooler"
+      ];
+      if (essentialKeywords.some(k => n.includes(k))) return "alta";
+      if (lowKeywords.some(k => n.includes(k))) return "baixa";
+      return "media";
+    }
+
+    function formatCurrency(val) {
+      return Number(val || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Lista de fábrica com 170 itens
     const fullHouseItems = [
-      // ================= COZINHA (74 ITENS) =================
-      // Eletrodomésticos e Móveis
       { name: "Geladeira Frost Free", category: "Cozinha", notes: "Eletrodoméstico essencial", bought: false },
       { name: "Fogão ou Cooktop", category: "Cozinha", notes: "4 ou 5 bocas", bought: false },
       { name: "Forno Elétrico ou de Embutir", category: "Cozinha", notes: "Se optar por Cooktop", bought: false },
@@ -214,8 +315,6 @@
       { name: "Balança Digital de Cozinha", category: "Cozinha", notes: "Receitas e dieta", bought: false },
       { name: "Armário de Cozinha", category: "Cozinha", notes: "Móvel", bought: false },
       { name: "Mesa de Jantar + Cadeiras", category: "Cozinha", notes: "Móvel", bought: false },
-
-      // Panelas e Forno
       { name: "Jogo de Panelas (Caçarolas e Panelas)", category: "Cozinha", notes: "Inox, Cerâmica ou Antiaderente", bought: false },
       { name: "Panela de Pressão", category: "Cozinha", notes: "4,5L ou 6L", bought: false },
       { name: "Frigideira Grande Antiaderente", category: "Cozinha", notes: "Grelhados e ovos", bought: false },
@@ -226,13 +325,11 @@
       { name: "Forma Redonda com Furo no Meio", category: "Cozinha", notes: "Para bolos e pudins", bought: false },
       { name: "Forma de Pizza", category: "Cozinha", notes: "Alumínio", bought: false },
       { name: "Refratários / Travessas de Vidro (Marinex)", category: "Cozinha", notes: "2 ou 3 tamanhos para forno", bought: false },
-
-      // Preparo e Utensílios
       { name: "Kit Facas de Cozinha (Chef, Carne, Legumes, Pão)", category: "Cozinha", notes: "Corte", bought: false },
       { name: "Afiador / Chaira de Facas", category: "Cozinha", notes: "Manter corte", bought: false },
       { name: "Tábua de Corte para Carnes", category: "Cozinha", notes: "Bambu ou Polietileno", bought: false },
       { name: "Tábua de Corte para Legumes/Pães", category: "Cozinha", notes: "Evitar contaminação cruzada", bought: false },
-      { name: "Tesoura de CozinhaTrinchar", category: "Cozinha", notes: "Multiuso", bought: false },
+      { name: "Tesoura de Cozinha", category: "Cozinha", notes: "Multiuso", bought: false },
       { name: "Kit Utensílios de Silicone (Concha, Espátula, Escumadeira, Colher)", category: "Cozinha", notes: "Não risca panelas", bought: false },
       { name: "Pegador de Macarrão e Pegador de Salada/Carne", category: "Cozinha", notes: "Inox / Silicone", bought: false },
       { name: "Fouet (Batedor de Ovos Manual)", category: "Cozinha", notes: "Claras e massas", bought: false },
@@ -254,8 +351,6 @@
       { name: "Conjunto de Tigelas / Bowls de Preparo", category: "Cozinha", notes: "Inox ou Vidro (3 tamanhos)", bought: false },
       { name: "Saladeira Grande", category: "Cozinha", notes: "Servir à mesa", bought: false },
       { name: "Funil", category: "Cozinha", notes: "Líquidos", bought: false },
-
-      // Mesa Posta e Louças
       { name: "Aparelho de Jantar (Pratos Rasos, Fundos e Sobremesa)", category: "Cozinha", notes: "6 ou 12 lugares", bought: false },
       { name: "Faqueiro Completo (Garfos, Facas e Colheres de Mesa/Chá)", category: "Cozinha", notes: "Inox (24 a 42 peças)", bought: false },
       { name: "Jogo de Copos de Vidro (Água / Suco)", category: "Cozinha", notes: "6 a 12 unidades", bought: false },
@@ -268,8 +363,6 @@
       { name: "Toalha de Mesa (2 unidades)", category: "Cozinha", notes: "Dia a dia e visitas", bought: false },
       { name: "Guardanapos de Papel + Porta-guardanapos", category: "Cozinha", notes: "Mesa", bought: false },
       { name: "Descanso de Panela (2 ou 3 unidades)", category: "Cozinha", notes: "Proteger a mesa", bought: false },
-
-      // Organização e Pia
       { name: "Kit Potes Herméticos / Tupperware (Vários tamanhos)", category: "Cozinha", notes: "Geladeira e marmitas", bought: false },
       { name: "Potes Porta-mantimentos (Arroz, Feijão, Açúcar, Café, Sal)", category: "Cozinha", notes: "Armário / Bancada", bought: false },
       { name: "Porta-temperos / Condimentos + Saleiro", category: "Cozinha", notes: "Bancada", bought: false },
@@ -283,8 +376,6 @@
       { name: "Luva Térmica de Forno", category: "Cozinha", notes: "Silicone ou tecido", bought: false },
       { name: "Rodo Pequeno de Pia", category: "Cozinha", notes: "Secar bancada", bought: false },
       { name: "Suporte para Papel Toalha, Papel Alumínio e Filme PVC", category: "Cozinha", notes: "Praticidade", bought: false },
-
-      // ================= SALA (15 ITENS) =================
       { name: "Sofá Retrátil e Reclinável", category: "Sala", notes: "Móvel principal", bought: false },
       { name: "Painel ou Rack para TV", category: "Sala", notes: "Móvel", bought: false },
       { name: "Smart TV da Sala", category: "Sala", notes: "50\" ou maior", bought: false },
@@ -300,8 +391,6 @@
       { name: "Luminária de Piso ou Abajur", category: "Sala", notes: "Luz aconchegante", bought: false },
       { name: "Porta-chaves de Entrada", category: "Sala", notes: "Organização", bought: false },
       { name: "Capacho de Entrada (Tapete da Porta)", category: "Sala", notes: "Área externa da porta", bought: false },
-
-      // ================= QUARTO (22 ITENS) =================
       { name: "Cama Box (Base)", category: "Quarto", notes: "Casal, Queen ou King", bought: false },
       { name: "Colchão do Casal", category: "Quarto", notes: "Molas ensacadas / Espuma", bought: false },
       { name: "Cabeceira de Cama", category: "Quarto", notes: "Estofada ou madeira", bought: false },
@@ -324,8 +413,6 @@
       { name: "Sapateira", category: "Quarto", notes: "Organizar calçados", bought: false },
       { name: "Ar-condicionado ou Ventilador Silencioso", category: "Quarto", notes: "Climatização", bought: false },
       { name: "TV para o Quarto + Suporte", category: "Quarto", notes: "Opcional", bought: false },
-
-      // ================= BANHEIRO (18 ITENS) =================
       { name: "Chuveiro Elétrico / Ducha", category: "Banheiro", notes: "Casa nova costuma vir sem!", bought: false },
       { name: "Fita Veda Rosca (Para instalar chuveiro/torneiras)", category: "Banheiro", notes: "Instalação", bought: false },
       { name: "Jogos de Toalhas de Banho e Rosto (4 jogos)", category: "Banheiro", notes: "8 banho + 4 rosto (100% algodão)", bought: false },
@@ -344,8 +431,6 @@
       { name: "Rodo Pequeno para Box", category: "Banheiro", notes: "Manter vidro limpo", bought: false },
       { name: "Secador de Cabelo", category: "Banheiro", notes: "Cuidados pessoais", bought: false },
       { name: "Difusor de Aromas / Cheirinho para Banheiro", category: "Banheiro", notes: "Ambiente perfumado", bought: false },
-
-      // ================= LAVANDERIA (18 ITENS) =================
       { name: "Máquina de Lavar Roupas", category: "Lavanderia", notes: "11kg a 15kg", bought: false },
       { name: "Cesto de Roupas Sujas", category: "Lavanderia", notes: "Bambu, tecido ou plástico", bought: false },
       { name: "Cesto para Roupas Limpas (Recolher do varal)", category: "Lavanderia", notes: "Plástico flexível", bought: false },
@@ -364,8 +449,6 @@
       { name: "Baldes (2 un) e Bacias Plásticas (2 un)", category: "Lavanderia", notes: "Limpeza e molho", bought: false },
       { name: "Panos de Chão (5 un) e Panos de Microfibra (8 un)", category: "Lavanderia", notes: "Piso, móveis e vidros", bought: false },
       { name: "Escova de Limpeza + Luvas de Borracha", category: "Lavanderia", notes: "Limpeza pesada", bought: false },
-
-      // ================= CASA & OUTROS (18 ITENS) =================
       { name: "Lâmpadas LED para toda a casa (10 a 15 un)", category: "Outros", notes: "Branca p/ cozinha/banheiro, Amarela p/ quarto/sala", bought: false },
       { name: "Escada Doméstica Dobrável (4 ou 5 degraus)", category: "Outros", notes: "Instalar lâmpadas, cortinas e limpar", bought: false },
       { name: "Furadeira / Parafusadeira + Kit Brocas, Buchas e Parafusos", category: "Outros", notes: "Montar móveis e instalar suportes", bought: false },
@@ -386,12 +469,15 @@
       { name: "1ª Compra de Limpeza (Detergente, Esponja, Sabão, Amaciante, Desinfetante, Saco de Lixo, Papel Higiênico)", category: "Outros", notes: "Para limpar a casa antes de entrar!", bought: false }
     ];
 
-    // Converte a lista num objeto único para salvar de uma vez sem duplicar
     function getInitialDataObject() {
       const obj = {};
       fullHouseItems.forEach((item, index) => {
         const key = 'item_' + String(index + 1).padStart(3, '0');
-        obj[key] = item;
+        obj[key] = {
+          ...item,
+          priority: guessPriority(item.name),
+          price: 0
+        };
       });
       return obj;
     }
@@ -400,7 +486,7 @@
       if (isResetting) return;
 
       const statusEl = document.getElementById('status-sync');
-      statusEl.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-500"></i> Sincronizado';
+      statusEl.innerHTML = '<i class="fa-solid fa-circle-check text-aqua-500"></i> Sincronizado';
       
       const data = snapshot.val();
       if (!data) {
@@ -410,11 +496,29 @@
         });
         return;
       }
+
+      // Migração silenciosa: corrige "Tesoura de CozinhaTrinchar" e adiciona prioridade onde não houver
+      const updates = {};
+      Object.entries(data).forEach(([id, item]) => {
+        if (item.name === "Tesoura de CozinhaTrinchar") {
+          updates[`${id}/name`] = "Tesoura de Cozinha";
+          item.name = "Tesoura de Cozinha";
+        }
+        if (!item.priority) {
+          const prio = guessPriority(item.name);
+          updates[`${id}/priority`] = prio;
+          item.priority = prio;
+        }
+      });
+      if (Object.keys(updates).length > 0) {
+        update(itemsRef, updates);
+      }
+
       allItems = data;
       updateCategoryCounts();
       renderItems();
     }, (error) => {
-      document.getElementById('status-sync').innerHTML = '<span class="text-red-500">Erro de permissão</span>';
+      document.getElementById('status-sync').innerHTML = '<span class="text-rose-500">Erro</span>';
       console.error(error);
     });
 
@@ -437,6 +541,7 @@
       const listEl = document.getElementById('items-list');
       const search = document.getElementById('search-input').value.toLowerCase();
       const statusFilter = document.getElementById('filter-status').value;
+      const priorityFilter = document.getElementById('filter-priority').value;
       listEl.innerHTML = '';
 
       const entries = Object.entries(allItems || {});
@@ -446,25 +551,47 @@
       const pendingCount = total - boughtCount;
       const pct = total > 0 ? Math.round((boughtCount / total) * 100) : 0;
 
+      // Cálculos financeiros
+      let totalBudget = 0;
+      let spentBudget = 0;
+      entries.forEach(([_, item]) => {
+        const p = parseFloat(item.price) || 0;
+        totalBudget += p;
+        if (item.bought) spentBudget += p;
+      });
+      const pendingBudget = totalBudget - spentBudget;
+
       document.getElementById('stat-total').innerText = total;
       document.getElementById('stat-bought').innerText = boughtCount;
       document.getElementById('stat-pending').innerText = pendingCount;
-      document.getElementById('progress-text').innerText = `${pct}% concluído`;
+      document.getElementById('progress-text').innerText = `${pct}%`;
       document.getElementById('progress-bar').style.width = `${pct}%`;
+
+      document.getElementById('fin-total').innerText = formatCurrency(totalBudget);
+      document.getElementById('fin-spent').innerText = formatCurrency(spentBudget);
+      document.getElementById('fin-pending').innerText = formatCurrency(pendingBudget);
 
       const filtered = entries.filter(([id, item]) => {
         const matchCat = currentCategory === 'Todos' || item.category === currentCategory;
         const matchSearch = item.name.toLowerCase().includes(search) || (item.notes && item.notes.toLowerCase().includes(search));
         const matchStatus = statusFilter === 'all' || (statusFilter === 'bought' && item.bought) || (statusFilter === 'pending' && !item.bought);
-        return matchCat && matchSearch && matchStatus;
+        const itemPrio = item.priority || 'media';
+        const matchPrio = priorityFilter === 'all' || itemPrio === priorityFilter;
+        return matchCat && matchSearch && matchStatus && matchPrio;
       });
 
-      filtered.sort((a, b) => Number(a[1].bought) - Number(b[1].bought));
+      const prioOrder = { "alta": 1, "media": 2, "baixa": 3 };
+      filtered.sort((a, b) => {
+        if (a[1].bought !== b[1].bought) return Number(a[1].bought) - Number(b[1].bought);
+        const pa = prioOrder[a[1].priority || 'media'] || 2;
+        const pb = prioOrder[b[1].priority || 'media'] || 2;
+        return pa - pb;
+      });
 
       if (filtered.length === 0) {
         listEl.innerHTML = `
-          <div class="text-center py-12 text-stone-400 text-sm bg-white rounded-2xl border border-stone-200/80 shadow-sm">
-            <i class="fa-solid fa-box-open text-2xl mb-2 text-stone-300 block"></i>
+          <div class="text-center py-12 text-slate-400 text-sm bg-white/90 rounded-2xl border border-aqua-200/80 shadow-sm">
+            <i class="fa-solid fa-box-open text-2xl mb-2 text-aqua-300 block"></i>
             Nenhum item encontrado neste filtro.
           </div>`;
         return;
@@ -472,33 +599,51 @@
 
       filtered.forEach(([id, item]) => {
         const style = categoryStyles[item.category] || categoryStyles["Outros"];
+        const prioKey = item.priority || 'media';
+        const prio = priorityStyles[prioKey] || priorityStyles['media'];
+        const priceVal = parseFloat(item.price) || 0;
+
         const card = document.createElement('div');
         card.className = `flex items-center justify-between p-3.5 rounded-2xl border transition duration-200 shadow-sm ${
           item.bought 
-            ? 'bg-emerald-50/30 border-emerald-200/60 opacity-70' 
-            : 'bg-white border-stone-200/90 hover:border-emerald-400 hover:shadow-md'
+            ? 'bg-aqua-50/50 border-aqua-200/60 opacity-65' 
+            : 'bg-white border-aqua-200/90 hover:border-aqua-400 hover:shadow-md'
         }`;
 
         card.innerHTML = `
-          <div class="flex items-center gap-3.5 flex-1 cursor-pointer" onclick="toggleItem('${id}', ${!item.bought})">
-            <div class="w-6 h-6 rounded-xl flex items-center justify-center border-2 transition shrink-0 ${
-              item.bought ? 'bg-emerald-500 border-emerald-500 text-white shadow-sm shadow-emerald-500/30' : 'border-stone-300 bg-stone-50/80'
+          <div class="flex items-start sm:items-center gap-3.5 flex-1">
+            <div onclick="toggleItem('${id}', ${!item.bought})" class="mt-0.5 sm:mt-0 w-6 h-6 rounded-xl flex items-center justify-center border-2 cursor-pointer transition shrink-0 ${
+              item.bought ? 'bg-aqua-500 border-aqua-500 text-white shadow-sm shadow-aqua-500/30' : 'border-aqua-300 bg-aqua-50/50 hover:border-aqua-500'
             }">
               ${item.bought ? '<i class="fa-solid fa-check text-xs font-bold"></i>' : ''}
             </div>
-            <div class="pr-2">
-              <p class="text-sm font-semibold leading-snug ${item.bought ? 'line-through text-stone-400' : 'text-slate-800'}">${item.name}</p>
-              <div class="flex flex-wrap items-center gap-1.5 mt-1">
+            <div class="pr-2 flex-1">
+              <p onclick="toggleItem('${id}', ${!item.bought})" class="text-sm font-semibold leading-snug cursor-pointer ${item.bought ? 'line-through text-slate-400' : 'text-slate-800'}">${item.name}</p>
+              
+              <div class="flex flex-wrap items-center gap-1.5 mt-1.5">
                 <span class="text-[10px] font-bold px-2 py-0.5 rounded-md border ${style.badge}">${style.icon} ${item.category}</span>
-                ${item.notes ? `<span class="text-xs text-stone-500">• ${item.notes}</span>` : ''}
+                
+                <!-- Etiqueta clicável para alternar prioridade rápido -->
+                <button onclick="cyclePriority('${id}', '${prioKey}')" class="text-[10px] font-bold px-2 py-0.5 rounded-md border transition hover:opacity-80 ${prio.classes}" title="Clique para mudar a prioridade">
+                  ${prio.label}
+                </button>
+
+                <!-- Etiqueta clicável para adicionar/editar preço rápido -->
+                <button onclick="quickPrice('${id}', ${priceVal})" class="text-[10px] font-bold px-2 py-0.5 rounded-md border transition ${
+                  priceVal > 0 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-50 text-slate-400 border-slate-200 hover:text-aqua-700 hover:border-aqua-300'
+                }" title="Clique para definir o valor">
+                  ${priceVal > 0 ? formatCurrency(priceVal) : '+ R$ Valor'}
+                </button>
+
+                ${item.notes ? `<span class="text-xs text-slate-500">• ${item.notes}</span>` : ''}
               </div>
             </div>
           </div>
-          <div class="flex items-center gap-1 shrink-0">
-            <button onclick="openEditModal('${id}')" class="text-stone-400 hover:text-emerald-600 p-2 text-xs transition" title="Editar">
+          <div class="flex items-center gap-0.5 shrink-0">
+            <button onclick="openEditModal('${id}')" class="text-slate-400 hover:text-aqua-600 p-2 text-xs transition" title="Editar">
               <i class="fa-solid fa-pen"></i>
             </button>
-            <button onclick="deleteItem('${id}')" class="text-stone-400 hover:text-rose-500 p-2 text-xs transition" title="Excluir">
+            <button onclick="deleteItem('${id}')" class="text-slate-400 hover:text-rose-500 p-2 text-xs transition" title="Excluir">
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
@@ -511,17 +656,33 @@
       update(ref(db, `itens_enxoval/${id}`), { bought: newState });
     };
 
+    // Alterna prioridade com 1 clique direto no card
+    window.cyclePriority = function(id, current) {
+      const next = current === 'alta' ? 'media' : (current === 'media' ? 'baixa' : 'alta');
+      update(ref(db, `itens_enxoval/${id}`), { priority: next });
+    };
+
+    // Define valor rápido clicando no botão "+ R$ Valor"
+    window.quickPrice = function(id, currentPrice) {
+      const input = prompt("Digite o valor estimado ou pago por este item (ex: 350 ou 129,90):", currentPrice > 0 ? currentPrice : "");
+      if (input === null) return;
+      const cleaned = parseFloat(input.replace(',', '.')) || 0;
+      update(ref(db, `itens_enxoval/${id}`), { price: cleaned });
+    };
+
     window.saveItem = function() {
       const editId = document.getElementById('edit-id').value;
       const name = document.getElementById('new-name').value.trim();
       const category = document.getElementById('new-category').value;
+      const priority = document.getElementById('new-priority').value;
+      const price = parseFloat(document.getElementById('new-price').value) || 0;
       const notes = document.getElementById('new-notes').value.trim();
       if (!name) return;
 
       if (editId) {
-        update(ref(db, `itens_enxoval/${editId}`), { name, category, notes });
+        update(ref(db, `itens_enxoval/${editId}`), { name, category, priority, price, notes });
       } else {
-        push(itemsRef, { name, category, notes, bought: false });
+        push(itemsRef, { name, category, priority, price, notes, bought: false });
       }
       closeModal();
     };
@@ -533,6 +694,8 @@
       document.getElementById('edit-id').value = id;
       document.getElementById('new-name').value = item.name;
       document.getElementById('new-category').value = item.category;
+      document.getElementById('new-priority').value = item.priority || 'media';
+      document.getElementById('new-price').value = item.price || '';
       document.getElementById('new-notes').value = item.notes || '';
       document.getElementById('modal').classList.remove('hidden');
     };
@@ -544,11 +707,15 @@
     };
 
     window.loadFullList = function() {
-      if (confirm('Isso vai limpar os itens duplicados e carregar exatamente os 165 itens da casa nova. Confirmar?')) {
+      const confirmText = prompt('ATENÇÃO: Isso vai apagar seu progresso atual e restaurar os 170 itens de fábrica.\n\nPara confirmar, digite RESETAR em maiúsculo:');
+      if (confirmText === 'RESETAR') {
         isResetting = true;
         set(itemsRef, getInitialDataObject()).then(() => {
           isResetting = false;
+          closeSettingsModal();
         });
+      } else if (confirmText !== null) {
+        alert('Texto incorreto. O reset foi cancelado para proteger seus dados.');
       }
     };
 
@@ -556,9 +723,9 @@
       currentCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
         if (btn.getAttribute('data-cat') === cat) {
-          btn.className = "cat-btn shrink-0 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white shadow-sm transition";
+          btn.className = "cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-aqua-600 text-white shadow-sm shadow-aqua-600/20 transition";
         } else {
-          btn.className = "cat-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-stone-200 hover:bg-stone-50 transition";
+          btn.className = "cat-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 border border-aqua-200 hover:bg-aqua-50 transition";
         }
       });
       renderItems();
@@ -568,10 +735,14 @@
       document.getElementById('modal-title').innerText = 'Novo Item do Enxoval';
       document.getElementById('edit-id').value = '';
       document.getElementById('new-name').value = '';
+      document.getElementById('new-priority').value = 'media';
+      document.getElementById('new-price').value = '';
       document.getElementById('new-notes').value = '';
       document.getElementById('modal').classList.remove('hidden');
     };
     window.closeModal = () => document.getElementById('modal').classList.add('hidden');
+    window.openSettingsModal = () => document.getElementById('settings-modal').classList.remove('hidden');
+    window.closeSettingsModal = () => document.getElementById('settings-modal').classList.add('hidden');
   </script>
 </body>
 </html>
